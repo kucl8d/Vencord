@@ -247,7 +247,7 @@ function cleanup() {
 }
 
 export default definePlugin({
-    name: "TypingSettings",
+    name: "SmoothTyping",
     description: "Smooth caret movement, character animation, change color cursor typing.",
     authors: [Devs.pluckerpilple],
     settings,
