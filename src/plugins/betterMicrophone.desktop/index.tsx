@@ -30,7 +30,7 @@ export const Native = VencordNative.pluginHelpers.BetterMicrophone as PluginNati
 export default definePlugin({
     name: "BetterMicrophone",
     description: "This plugin allows you to further customize your microphone.",
-    authors: [Devs.ncsse],
+    authors: [Devs.pluckerpilple],
     dependencies: ["PhilsPluginLibrary"],
     requiresRestart: true,
 

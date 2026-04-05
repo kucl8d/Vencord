@@ -33,12 +33,8 @@ import { PermissionAllowedIcon, PermissionDefaultIcon, PermissionDeniedIcon } fr
 export const enum PermissionType {
     Role = 0,
     User = 1,
-<<<<<<< HEAD
     Owner = 2,
     Server_OWNER
-=======
-    Owner = 2
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
 }
 
 export interface RoleOrUserPermission {
@@ -144,11 +140,7 @@ function RolesAndUsersPermissionsComponent({ permissions, guild, modalProps, hea
                                                 }
                                             }}
                                         >
-<<<<<<< HEAD
                                             {(permission.type === PermissionType.Role || permission.type === PermissionType.Server_OWNER) && (
-=======
-                                            {(permission.type === PermissionType.Role || permission.type === PermissionType.Owner) && (
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
                                                 <span
                                                     className={cl("modal-role-circle")}
                                                     style={{ backgroundColor: role?.colorString ?? "var(--primary-300)" }}
@@ -174,11 +166,7 @@ function RolesAndUsersPermissionsComponent({ permissions, guild, modalProps, hea
                                                             ? (user != null && getUniqueUsername(user)) ?? "Unknown User"
                                                             : (
                                                                 <Flex gap="0.2em">
-<<<<<<< HEAD
                                                                     @ ( Server_OWNER )
-=======
-                                                                    @owner
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
                                                                     <OwnerCrownIcon height={18} width={18} aria-hidden="true" />
                                                                 </Flex>
                                                             )

@@ -201,8 +201,4 @@ function UserPermissionsComponent({ guild, guildMember, closePopout }: { guild: 
     </div>;
 }
 
-<<<<<<< HEAD
 export default ErrorBoundary.wrap(UserPermissionsComponent, { noop: true });
-=======
-export default ErrorBoundary.wrap(UserPermissionsComponent, { noop: true });
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96

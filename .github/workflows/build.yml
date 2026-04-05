@@ -53,18 +53,10 @@ jobs:
                   echo "release_tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
             - name: Upload DevBuild as release
-<<<<<<< HEAD
-              if: github.repository == 'pluckerpilple/Vencord'
-=======
               if: github.repository == 'kucl8d/Vencord'
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
               run: |
                   gh release upload devbuild --clobber dist/*
                   gh release edit devbuild --title "DevBuild $RELEASE_TAG"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-<<<<<<< HEAD
                   RELEASE_TAG: ${{ env.release_tag }}
-=======
-                  RELEASE_TAG: ${{ env.release_tag }}
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96

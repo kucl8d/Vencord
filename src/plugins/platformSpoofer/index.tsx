@@ -164,7 +164,7 @@ const ProfilePreview = () => {
 export default definePlugin({
     name: "PlatformSpoofer",
     description: "Spoof what platform or device you're on",
-    authors: [Devs.ncsse],
+    authors: [Devs.pluckerpilple],
     settingsAboutComponent: () => (
         <>
             <Forms.FormText className="plugin-warning">
@@ -194,9 +194,7 @@ export default definePlugin({
             case "embedded":
                 return { browser: "Discord Embedded" };
             case "vr":
-                    return { browser: "Discord VR" };
-                default:
-                    return null;
+                return { browser: "Discord VR" };
         }
     }
 });

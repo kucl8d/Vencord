@@ -294,7 +294,7 @@ const ChannelContext: NavContextMenuPatchCallback = (children, { channel }) => {
 export default definePlugin({
     name: "VoiceChannelBlacklist",
     description: "Block users from voice channels with customizable actions",
-    authors: [Devs.ncsse],
+    authors: [Devs.pluckerpilple],
     settings,
 
     start() {

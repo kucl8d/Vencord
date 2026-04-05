@@ -29,7 +29,7 @@ export const settings = definePluginSettings({
 export default definePlugin({
     name: "ProfileSets",
     description: "Allows you to save and load different profile presets, via the Profile Section in Settings.",
-    authors: [Devs.ncsse],
+    authors: [Devs.pluckerpilple],
     settings,
     patches: [
         {

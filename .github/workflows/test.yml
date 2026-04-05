@@ -26,8 +26,4 @@ jobs:
             - name: Test if web version compiles
               run: pnpm buildWeb
             - name: Test if plugin structure is valid
-<<<<<<< HEAD
               run: pnpm generatePluginJson || true
-=======
-              run: pnpm generatePluginJson || true
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96

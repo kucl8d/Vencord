@@ -30,7 +30,7 @@ import { initScreenshareAudioStore, initScreenshareStore } from "@plugins/better
 export default definePlugin({
     name: "BetterScreenshare",
     description: "This plugin allows you to further customize your screenshare.",
-    authors: [Devs.ncsse],
+    authors: [Devs.pluckerpilple],
     dependencies: ["PhilsPluginLibrary"],
     patches: [
         {

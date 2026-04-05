@@ -130,7 +130,7 @@ const ApplicationStreamingStore = findStoreLazy("ApplicationStreamingStore");
 export default definePlugin({
     name: "WhosWatching",
     description: "Hover over the screenshare icon to view what users are watching your stream",
-    authors: [Devs.ncsse],
+    authors: [Devs.pluckerpilple],
     settings: settings,
     patches: [
         {
