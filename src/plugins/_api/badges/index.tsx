@@ -50,7 +50,11 @@ async function loadBadges(noCache = false) {
     if (noCache)
         init.cache = "no-cache";
 
+<<<<<<< HEAD
     DonorBadges = await fetch("https://nullrinss.github.io/badges/badges.json", init)
+=======
+    DonorBadges = await fetch("https://badges.vencord.dev/badges.json", init)
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
         .then(r => r.json());
 }
 
@@ -181,7 +185,11 @@ export default definePlugin({
             props: {
                 style: {
                     borderRadius: "50%",
+<<<<<<< HEAD
                     transform: "scale(1.0)" // The image is a bit too big compared to default badges
+=======
+                    transform: "scale(0.9)" // The image is a bit too big compared to default badges
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
                 }
             },
             onContextMenu(event, badge) {

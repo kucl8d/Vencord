@@ -51,10 +51,13 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "V",
         id: 343383572805058560n
     },
+<<<<<<< HEAD
     ncsse: {
         name: "ncsse",
         id: 375402345971974147n
     },
+=======
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
     Apexo: {
         name: "Apexo",
         id: 228548952687902720n
@@ -164,15 +167,21 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "Tyman",
         id: 487443883127472129n
     },
+<<<<<<< HEAD
     
+=======
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
     afn: {
         name: "afn",
         id: 420043923822608384n
     },
+<<<<<<< HEAD
     MrDiamond: {
         name: "mrdiamonddog",
         id: 523338295644782592n,
     },
+=======
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
     KraXen72: {
         name: "KraXen72",
         id: 379304073515499530n
@@ -238,10 +247,13 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         id: 347884694408265729n,
         badge: false
     },
+<<<<<<< HEAD
     Drag: {
         name: "dragalt_",
         id: 1189903210564038697n
     },
+=======
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
     whqwert: {
         name: "whqwert",
         id: 586239091520176128n
@@ -634,10 +646,13 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "VV",
         id: 254866377087778816n
     },
+<<<<<<< HEAD
     desu: {
         name: "desu",
         id: 526331463709360141n
     },
+=======
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
     u32: {
         name: "u32",
         id: 1063237286818488351n,
@@ -646,6 +661,7 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "prism",
         id: 390884143749136386n,
     },
+<<<<<<< HEAD
     Cortex: {
         name: "Cortex",
         id: 913205935319691335n
@@ -658,6 +674,8 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "sexwithppl",
         id: 298055455614173184n,
     },
+=======
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
 } satisfies Record<string, Dev>);
 
 // iife so #__PURE__ works correctly

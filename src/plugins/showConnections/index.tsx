@@ -160,13 +160,24 @@ export default definePlugin({
 
     patches: [
         {
+<<<<<<< HEAD
             find: ".hasAvatarForGuild(null==",
             replacement: {
                 match: /currentUser:\i,guild:\i[^}]*?\}\)(?=])(?<=user:(\i),bio:null==(\i)\?.+?)/,
                 replace: "$&,$self.profilePopoutComponent({ user: $1, displayProfile: $2 })"
+=======
+            find: /\.POPOUT,onClose:\i}\),nicknameIcons:.+?\.isProvisional/,
+            replacement: {
+                match: /userId:\i\.id,guild:\i\}\)(?=])/,
+                replace: "$&,$self.profilePopoutComponent(arguments[0])"
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
             }
         }
     ],
 
     profilePopoutComponent,
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96

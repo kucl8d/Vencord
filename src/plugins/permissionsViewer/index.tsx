@@ -81,7 +81,11 @@ function MenuItem(guildId: string, id?: string, type?: MenuItemParentType) {
 
                         if (guild.ownerId === id) {
                             permissions.push({
+<<<<<<< HEAD
                                 type: PermissionType.Server_OWNER,
+=======
+                                type: PermissionType.Owner,
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
                                 permissions: Object.values(PermissionsBits).reduce((prev, curr) => prev | curr, 0n)
                             });
                         }
@@ -214,4 +218,8 @@ export default definePlugin({
         "guild-context": makeContextMenuPatch("privacy", MenuItemParentType.Guild),
         "guild-header-popout": makeContextMenuPatch("privacy", MenuItemParentType.Guild)
     }
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
