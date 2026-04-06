@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-<div align="center">
-
-![Vencord Logo](https://cdn.discordapp.com/emojis/1092089799109775453.png?size=64)
-# Vencord (ncsse)
-
-</div>
-
-A fork of [Vencord](https://github.com/Vendicated/Vencord).
-
-This is the branch of Vencord I personally run on my machine.
-
-### Extra features compared to [Vendicated/Vencord](https://github.com/Vendicated/Vencord) main:
-- All my plugins preinstalled
-=======
 # Vencord
 
 ![](https://img.shields.io/github/package-json/v/Vendicated/Vencord?style=for-the-badge&logo=github&logoColor=d3869b&label=&color=1d2021&labelColor=282828)
@@ -33,14 +18,10 @@ The cutest Discord client mod
 -   Privacy friendly: blocks Discord analytics & crash reporting out of the box and has no telemetry
 -   Maintained very actively, broken plugins are usually fixed within 12 hours
 -   Settings sync: Keep your plugins and their settings synchronised between devices / apps (optional)
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
 
 
 ## Installing / Uninstalling
 
-<<<<<<< HEAD
-To download, click on the Download to go to the [download](https://github.com/ncsse/Installer/releases/tag/v1.0.0) list 
-=======
 Visit https://vencord.dev/download
 
 ## Join our Support/Community Server
@@ -64,7 +45,6 @@ https://discord.gg/D9uwnFnqmd
     <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Vendicated/Vencord&type=Timeline" />
   </picture>
 </a>
->>>>>>> 40c13101762e5f144dc9a7b415005a463c0cda96
 
 ## Disclaimer
 
