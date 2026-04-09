@@ -322,6 +322,11 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "Fiery",
         id: 890228870559698955n
     },
+    songsheals: {                                                                                                                                                                               
+        name: "songsheals",
+        id: 406591789127172097n
+
+    },
     KannaDev: {
         name: "Kanna",
         id: 317728561106518019n
