@@ -324,7 +324,8 @@ export const Devs = /* #__PURE__*/ Object.freeze({
     },
     songsheals: {                                                                                                                                                                               
         name: "songsheals",
-        id: 406591789127172097n
+        id: 406591789127172097n,
+        badge: false
 
     },
     KannaDev: {
