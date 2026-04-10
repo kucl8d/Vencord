@@ -64,10 +64,6 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         id: 674710789138939916n,
         badge: false
     },
-    viciouscal: {
-        name: "viciouscal",
-        id: 883820228360929320n,
-    },
     Cyn: {
         name: "Cynosphere",
         id: 150745989836308480n
@@ -322,7 +318,7 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "Fiery",
         id: 890228870559698955n
     },
-    songsheals: {                                                                                                                                                                               
+    Savage: {                                                                                                                                                                               
         name: "songsheals",
         id: 406591789127172097n,
         badge: false
@@ -663,10 +659,6 @@ export const Devs = /* #__PURE__*/ Object.freeze({
     mochienya: {
         name: "mochie",
         id: 1043599230247374869n
-    },
-    sexwithppl: {
-        name: "sexwithppl",
-        id: 298055455614173184n,
     },
 } satisfies Record<string, Dev>);
 
