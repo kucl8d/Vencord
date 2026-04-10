@@ -31,7 +31,7 @@ export const PluginInfo = {
         songsheals: {
             github: "https://github.com/kucl8d",
             id: 406591789127172097n,
-            name: "songsheals"
+            name: "Savage"
         }
     },
 } as const satisfies types.PluginInfo;
