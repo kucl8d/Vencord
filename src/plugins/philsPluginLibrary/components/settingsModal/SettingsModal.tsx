@@ -22,8 +22,8 @@ import { Flex } from "@components/Flex";
 import { ContributorAuthorSummary } from "@plugins/philsPluginLibrary/components/ContributorAuthorSummary";
 import { Author, Contributor } from "@plugins/philsPluginLibrary/types";
 import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalRoot } from "@utils/modal";
-
 import React, { JSX } from "react";
+
 
 export interface SettingsModalProps extends React.ComponentProps<typeof ModalRoot> {
     title?: string;

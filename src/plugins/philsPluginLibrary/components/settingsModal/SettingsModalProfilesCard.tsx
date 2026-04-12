@@ -23,11 +23,6 @@ import { SettingsModalCard } from "@plugins/philsPluginLibrary/components/settin
 import { SettingsModalCardItem } from "@plugins/philsPluginLibrary/components/settingsModal/SettingsModalCardItem";
 import { Select, TextInput, useEffect, useState } from "@webpack/common";
 
-
-
-
-
-
 export interface SettingsModalProfilesCardProps<T extends PluginSettings = {}> extends React.ComponentProps<typeof SettingsModalCard> {
     profileableStore: ProfilableStore<T, any>;
     onSaveStateChanged: (isSaving: boolean) => void;

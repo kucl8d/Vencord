@@ -21,14 +21,9 @@ import { panelClasses } from "@plugins/philsPluginLibrary";
 import { classes } from "@utils/misc";
 import React, { JSX } from "react";
 
-
-
 export type IconComponent = <T extends { className: string; }>(props: T) => JSX.Element;
 export interface SettingsPanelButtonProps extends Partial<React.ComponentProps<typeof Button>> {
     icon?: IconComponent;
-
-
-
 }
 
 export const SettingsPanelButton = (props: SettingsPanelButtonProps) => {

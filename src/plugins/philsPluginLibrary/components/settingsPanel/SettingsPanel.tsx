@@ -19,6 +19,7 @@
 import { panelClasses } from "@plugins/philsPluginLibrary/discordModules";
 import { React } from "@webpack/common";
 
+
 export interface SettingsPanelProps {
     children: React.ComponentProps<"div">["children"];
 }
