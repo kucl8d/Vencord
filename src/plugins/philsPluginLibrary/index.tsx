@@ -18,7 +18,7 @@
 
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
-import { fakeD } from "../fakeDeafen";
+import { fakeD } from "@plugins/fakedeafen";
 import { replacedUserPanelComponent } from "@plugins/philsPluginLibrary/patches";
 
 export default definePlugin({
