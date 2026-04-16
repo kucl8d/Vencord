@@ -132,4 +132,4 @@ export const Themes = $Themes;
 /**
  * An API allowing you to add icons to the nickname, in profiles.
  */
-export const NicknameIcons = $NicknameIcons;
+
