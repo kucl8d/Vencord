@@ -283,7 +283,7 @@ function SettingsPanel() {
 export default definePlugin({
     name: "HypeSquadChanger",
     description: "Switch your Hypesquad house badge easily.",  
-    authors: [Devs.Savage],
+    authors: [Devs.Savage,Devs.pluckerpilple],
     settings,
     settingsAboutComponent: SettingsPanel,
 
