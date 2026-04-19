@@ -1,0 +1,51 @@
+name: Discord Notify
+
+on:
+  push:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Embed
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{
+            "content": "@everyone",
+            "embeds": [{
+              "title": "Vencord Updated !",
+              "description": "Update Now !!",
+              "color": 255,
+              "thumbnail": {
+                "url": "https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png"
+              },
+              "fields": [
+                {
+                  "name": "Author",
+                  "value": "pluckerpilple",
+                  "inline": false
+                },
+                {
+                  "name": "Status",
+                  "value": "New Commit ",
+                  "inline": false
+                },
+                {
+                  "name": "System",
+                  "value": "Ready",
+                  "inline": false
+                },
+                {
+                  "name": "Comment",
+                  "value": "[Click Here](${{ github.event.head_commit.url }})",
+                  "inline": false
+                }
+              ],
+              "footer": {
+                "text": "GitHub Auto Update"
+              },
+              "timestamp": "${{ github.event.head_commit.timestamp }}"
+            }]
+          }' \
+          ${{ secrets.DISCORD_WEBHOOK }}
