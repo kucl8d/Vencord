@@ -2,6 +2,8 @@ name: Discord Notify
 
 on:
   push:
+  schedule:
+    - cron: "0 * * * *"  # كل ساعة
 
 jobs:
   notify:
@@ -17,6 +19,7 @@ jobs:
           FILES=$(echo "$RESPONSE" | jq '.files | length')
           ADD=$(echo "$RESPONSE" | jq '.stats.additions')
           DEL=$(echo "$RESPONSE" | jq '.stats.deletions')
+          DATE=$(echo "$RESPONSE" | jq -r '.commit.author.date')
 
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
 
@@ -25,40 +28,74 @@ jobs:
           echo "del=$DEL" >> $GITHUB_OUTPUT
           echo "sha=$SHORT_SHA" >> $GITHUB_OUTPUT
           echo "fullsha=${{ github.sha }}" >> $GITHUB_OUTPUT
+          echo "date=$DATE" >> $GITHUB_OUTPUT
 
       - name: Send to Discord
         run: |
+          NOW=$(date -u +%s)
+          COMMIT_TIME=$(date -d "${{ steps.commit.outputs.date }}" +%s)
+
+          DIFF=$((NOW - COMMIT_TIME))
+          MINUTES=$((DIFF / 60))
+          HOURS=$((MINUTES / 60))
+
+          if [ $HOURS -gt 0 ]; then
+            LAST_UPDATE="Before $HOURS hours ago"
+          elif [ $MINUTES -gt 0 ]; then
+            LAST_UPDATE="Before $MINUTES minutes ago"
+          else
+            LAST_UPDATE="Just now"
+          fi
+
+          TYPE="${{ github.event_name }}"
+
+          if [ "$TYPE" = "push" ]; then
+            TITLE="Vencord Updated"
+            COLOR=9605778
+            STATUS="Files Changed: ${{ steps.commit.outputs.files }}\nAdditions: ${{ steps.commit.outputs.add }}\nDeletions: ${{ steps.commit.outputs.del }}"
+            COMMENT="[${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})"
+          else
+            TITLE="Vencord Status"
+            COLOR=657930
+            STATUS="Ahead ✅\nNo recent updates"
+            COMMENT="No new commits"
+          fi
+
           curl -H "Content-Type: application/json" \
           -X POST \
-          -d '{
-            "content": "@everyone",
-            "embeds": [{
-              "title": "Vencord Updated",
-              "color": 9605778,
-              "thumbnail": {
-                "url": "https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png"
+          -d "{
+            \"content\": \"@everyone\",
+            \"embeds\": [{
+              \"title\": \"$TITLE\",
+              \"color\": $COLOR,
+              \"thumbnail\": {
+                \"url\": \"https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png\"
               },
-              "fields": [
+              \"fields\": [
                 {
-                  "name": "Author",
-                  "value": "<@375402345971974147>"
+                  \"name\": \"Author\",
+                  \"value\": \"<@375402345971974147>\"
                 },
                 {
-                  "name": "Status",
-                  "value": "Files Changed: ${{ steps.commit.outputs.files }}\nAdditions: ${{ steps.commit.outputs.add }}\nDeletions: ${{ steps.commit.outputs.del }}"
+                  \"name\": \"Status\",
+                  \"value\": \"$STATUS\"
                 },
                 {
-                  "name": "System",
-                  "value": "Ready"
+                  \"name\": \"System\",
+                  \"value\": \"Ready\"
                 },
                 {
-                  "name": "Comment",
-                  "value": "[${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})"
+                  \"name\": \"Last Update\",
+                  \"value\": \"$LAST_UPDATE\"
+                },
+                {
+                  \"name\": \"Comment\",
+                  \"value\": \"$COMMENT\"
                 }
               ],
-              "footer": {
-                "text": "Vencord Status"
+              \"footer\": {
+                \"text\": \"Vencord Status\"
               }
             }]
-          }' \
+          }" \
           ${{ secrets.DISCORD_WEBHOOK }}
