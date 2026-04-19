@@ -35,7 +35,7 @@ jobs:
             "embeds": [{
               "title": "Vencord Updated !",
               "description": "Update Now !!",
-              "color": 3447003,
+              "color": 657930,
               "thumbnail": {
                 "url": "https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png"
               },
