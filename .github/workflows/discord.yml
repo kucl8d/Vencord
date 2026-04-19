@@ -54,43 +54,45 @@ jobs:
 
           if [ "$MODE" = "update" ]; then
 
-            curl -H "Content-Type: application/json" \
-            -X POST \
-            -d "{
-              \"content\": \"@everyone\",
-              "embeds": [{
-              "title": "Vencord Updated",
-              "color": 9605778,
-              "thumbnail": {
-                "url": "https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png"
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{
+            \"content\": \"@everyone\",
+            \"embeds\": [{
+              \"title\": \"Vencord Updated\",
+              \"color\": 9605778,
+              \"thumbnail\": {
+                \"url\": \"https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png\"
               },
-              "fields": [
+              \"fields\": [
                 {
-                  "name": "Author",
-                  "value": "<@375402345971974147>",
-                  "inline": false
+                  \"name\": \"Author\",
+                  \"value\": \"<@375402345971974147>\",
+                  \"inline\": false
                 },
                 {
-                  "name": "Status",
-                  "value": "Files Changed: ...",
-                  "inline": false
+                  \"name\": \"Status\",
+                  \"value\": \"Files Changed: ${{ steps.commit.outputs.files }}\nAdditions: ${{ steps.commit.outputs.add }}\nDeletions: ${{ steps.commit.outputs.del }}\",
+                  \"inline\": false
                 },
                 {
-                  "name": "System",
-                  "value": "Ready",
-                  "inline": false
+                  \"name\": \"System\",
+                  \"value\": \"Ready\",
+                  \"inline\": false
                 },
                 {
-                  "name": "Comment",
-                  "value": "[Commit ...]",
-                  "inline": false
+                  \"name\": \"Comment\",
+                  \"value\": \"[Commit ${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})\",
+                  \"inline\": false
                 }
               ],
-              "footer": {
-                "text": "Vencord Update"
+              \"footer\": {
+                \"text\": \"Vencord Update\"
               }
             }]
-
+          }" \
+          
+          ${{ secrets.DISCORD_WEBHOOK }}
             }" \
             ${{ secrets.DISCORD_WEBHOOK }}
 
@@ -107,39 +109,41 @@ jobs:
             -X POST \
             -d "{
               \"content\": \"\",
-              "embeds": [{
-              "title": "Vencord Status",
-              "color": 657930,
-              "thumbnail": {
-                "url": "https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png"
+              \"embeds\": [{
+                \"title\": \"Vencord Status\",
+                \"color\": 657930,
+                \"thumbnail\": {
+                  \"url\": \"https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png\"
                 },
-                "fields": [
+                \"fields\": [
                   {
-                    "name": "Author",
-                    "value": "<@375402345971974147>",
-                    "inline": false
+                    \"name\": \"Author\",
+                    \"value\": \"<@375402345971974147>\",
+                    \"inline\": false
                   },
                   {
-                    "name": "Status",
-                    "value": "Ahead ✅",
-                    "inline": false
+                    \"name\": \"Status\",
+                    \"value\": \"Ahead ✅\",
+                    \"inline\": false
                   },
                   {
-                    "name": "System",
-                    "value": "Ready",
-                    "inline": false
+                    \"name\": \"System\",
+                    \"value\": \"Ready\",
+                    \"inline\": false
                   },
                   {
-                    "name": "Last Update",
-                    "value": "$LAST_UPDATE",
-                    "inline": false
+                    \"name\": \"Last Update\",
+                    \"value\": \"$LAST_UPDATE\",
+                    \"inline\": false
                   }
                 ],
-                "footer": {
-                  "text": "Vencord Status"
+                \"footer\": {
+                  \"text\": \"Vencord Status\"
                 }
               }]
-
+              
+              }" \
+              ${{ secrets.DISCORD_WEBHOOK }}
             }" \
             ${{ secrets.DISCORD_WEBHOOK }}
 
