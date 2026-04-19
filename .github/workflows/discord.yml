@@ -77,12 +77,12 @@ jobs:
                   },
                   {
                     \"name\": \"System\",
-                    \"value\": \"Updated\",
+                    \"value\": \"Ready\",
                     \"inline\": false
                   },
                   {
                     \"name\": \"Comment\",
-                    \"value\": \"[Commit ${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})\",
+                    \"value\": \"[${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})\",
                     \"inline\": false
                   }
                 ],
