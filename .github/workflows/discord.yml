@@ -33,16 +33,16 @@ jobs:
           -d '{
             "content": "@everyone",
             "embeds": [{
-              "title": "Vencord Updated !",
+              "title": "Vencord Updated",
               "description": "Update Now !!",
-              "color": 657930,
+              "color": 9605778,
               "thumbnail": {
                 "url": "https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png"
               },
               "fields": [
                 {
                   "name": "Author",
-                  "value": "pluckerpilple"
+                  "value": "<@375402345971974147>"
                 },
                 {
                   "name": "Status",
@@ -54,13 +54,14 @@ jobs:
                 },
                 {
                   "name": "Comment",
-                  "value": "[Commit ${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})"
+                  "value": "[${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})"
                 }
               ],
               "footer": {
-                "text": "GitHub Auto Update"
+                "text": "Vencord Status"
               },
-              "timestamp": "${{ github.event.head_commit.timestamp }}"
+              "timestamp": 
+              "${{ github.event.head_commit.timestamp }}"
             }]
           }' \
           ${{ secrets.DISCORD_WEBHOOK }}
