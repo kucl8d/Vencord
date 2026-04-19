@@ -3,23 +3,21 @@ name: Discord Notify
 on:
   push:
   schedule:
-    - cron: "* * * * *"  # كل دقيقة
+    - cron: "* * * * *"
 
 jobs:
   notify:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get Latest Commit Data
+      - name: Get Commit Data
         id: commit
         run: |
-          RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/commits)
+          RESPONSE=$(curl -s https://api.github.com/repos/${{ github.repository }}/commits)
 
           SHA=$(echo "$RESPONSE" | jq -r '.[0].sha')
 
-          COMMIT=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/commits/$SHA)
+          COMMIT=$(curl -s https://api.github.com/repos/${{ github.repository }}/commits/$SHA)
 
           FILES=$(echo "$COMMIT" | jq '.files | length')
           ADD=$(echo "$COMMIT" | jq '.stats.additions')
@@ -35,72 +33,106 @@ jobs:
           echo "fullsha=$SHA" >> $GITHUB_OUTPUT
           echo "date=$DATE" >> $GITHUB_OUTPUT
 
-      - name: Send to Discord (LIVE)
+      - name: Build Status
+        id: status
         run: |
           NOW=$(date -u +%s)
           COMMIT_TIME=$(date -d "${{ steps.commit.outputs.date }}" +%s)
 
           DIFF=$((NOW - COMMIT_TIME))
           MINUTES=$((DIFF / 60))
-          HOURS=$((MINUTES / 60))
 
-          if [ $HOURS -gt 0 ]; then
-            LAST_UPDATE="Before $HOURS hours ago"
-          elif [ $MINUTES -gt 0 ]; then
-            LAST_UPDATE="Before $MINUTES minutes ago"
+          if [ $MINUTES -ge 20 ]; then
+            echo "mode=stable" >> $GITHUB_OUTPUT
           else
-            LAST_UPDATE="Just now"
+            echo "mode=update" >> $GITHUB_OUTPUT
           fi
 
-          TYPE="${{ github.event_name }}"
+      - name: Send / Edit Discord Message
+        run: |
+          MODE="${{ steps.status.outputs.mode }}"
 
-          if [ "$TYPE" = "push" ]; then
-            TITLE="Vencord Updated"
-            COLOR=9605778
-            STATUS="Files Changed: ${{ steps.commit.outputs.files }}\nAdditions: ${{ steps.commit.outputs.add }}\nDeletions: ${{ steps.commit.outputs.del }}"
-            COMMENT="[${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})"
-          else
-            TITLE="Vencord Status"
-            COLOR=657930
-            STATUS="Ahead ✅\nNo recent updates"
-            COMMENT="No new commits"
-          fi
+          if [ "$MODE" = "update" ]; then
 
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "{
-            \"content\": \"@everyone\",
-            \"embeds\": [{
-              \"title\": \"$TITLE\",
-              \"color\": $COLOR,
-              \"thumbnail\": {
-                \"url\": \"https://cdn.jsdelivr.net/gh/kucl8d/kucl8d@main/b75921f3-2732-4167-b309-99cd78c7b9c6.png\"
-              },
-              \"fields\": [
-                {
-                  \"name\": \"Author\",
-                  \"value\": \"<@375402345971974147>\"
-                },
-                {
-                  \"name\": \"Status\",
-                  \"value\": \"$STATUS\"
-                },
-                {
-                  \"name\": \"System\",
-                  \"value\": \"Ready\"
-                },
-                {
-                  \"name\": \"Last Update\",
-                  \"value\": \"$LAST_UPDATE\"
-                },
-                {
-                  \"name\": \"Comment\",
-                  \"value\": \"[Commit $SHORT_SHA](https://github.com/${{ github.repository }}/commit/$SHA)\"
+            curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "{
+              \"content\": \"@everyone\",
+              \"embeds\": [{
+                \"title\": \"Vencord Updated\",
+                \"color\": 9605778,
+                \"fields\": [
+                  {
+                    \"name\": \"Author\",
+                    \"value\": \"<@375402345971974147>\",
+                    \"inline\": false
+                  },
+                  {
+                    \"name\": \"Status\",
+                    \"value\": \"Files Changed: ${{ steps.commit.outputs.files }}\nAdditions: ${{ steps.commit.outputs.add }}\nDeletions: ${{ steps.commit.outputs.del }}\",
+                    \"inline\": false
+                  },
+                  {
+                    \"name\": \"System\",
+                    \"value\": \"Updated\",
+                    \"inline\": false
+                  },
+                  {
+                    \"name\": \"Comment\",
+                    \"value\": \"[Commit ${{ steps.commit.outputs.sha }}](https://github.com/${{ github.repository }}/commit/${{ steps.commit.outputs.fullsha }})\",
+                    \"inline\": false
+                  }
+                ],
+                \"footer\": {
+                  \"text\": \"Vencord Update\"
                 }
-              ],
-              \"footer\": {
-                \"text\": \"Vencord Status\"
-              }
-            }]
-          }" \
-          ${{ secrets.DISCORD_WEBHOOK }}
+              }]
+            }" \
+            ${{ secrets.DISCORD_WEBHOOK }}
+
+          else
+
+            NOW=$(date -u +%s)
+            COMMIT_TIME=$(date -d "${{ steps.commit.outputs.date }}" +%s)
+            DIFF=$((NOW - COMMIT_TIME))
+            MINUTES=$((DIFF / 60))
+
+            LAST_UPDATE="Before $MINUTES minutes ago"
+
+            curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "{
+              \"content\": \"\",
+              \"embeds\": [{
+                \"title\": \"Vencord Status\",
+                \"color\": 657930,
+                \"fields\": [
+                  {
+                    \"name\": \"Author\",
+                    \"value\": \"<@375402345971974147>\",
+                    \"inline\": false
+                  },
+                  {
+                    \"name\": \"Status\",
+                    \"value\": \"Ahead ✅\",
+                    \"inline\": false
+                  },
+                  {
+                    \"name\": \"System\",
+                    \"value\": \"Ready\",
+                    \"inline\": false
+                  },
+                  {
+                    \"name\": \"Last Update\",
+                    \"value\": \"$LAST_UPDATE\",
+                    \"inline\": false
+                  }
+                ],
+                \"footer\": {
+                  \"text\": \"Vencord Status\"
+                }
+              }]
+            }" \
+            ${{ secrets.DISCORD_WEBHOOK }}
+
+          fi
