@@ -80,7 +80,7 @@ jobs:
                   },
                   {
                     \"name\": \"System\",
-                    \"value\": \"Updated\",
+                    \"value\": \"Ready\",
                     \"inline\": false
                   },
                   {
