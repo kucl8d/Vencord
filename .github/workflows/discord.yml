@@ -3,7 +3,7 @@ name: Discord Notify
 on:
   push:
   schedule:
-    - cron: "* * * * *"  # كل دقيقة (عشان يصير شبه live)
+    - cron: "* * * * *"  # كل دقيقة
 
 jobs:
   notify:
@@ -16,13 +16,15 @@ jobs:
           RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           https://api.github.com/repos/${{ github.repository }}/commits)
 
-          LATEST=$(echo "$RESPONSE" | jq '.[0]')
+          SHA=$(echo "$RESPONSE" | jq -r '.[0].sha')
 
-          SHA=$(echo "$LATEST" | jq -r '.sha')
-          FILES=$(echo "$LATEST" | jq '.files | length')
-          ADD=$(echo "$LATEST" | jq '.stats.additions')
-          DEL=$(echo "$LATEST" | jq '.stats.deletions')
-          DATE=$(echo "$LATEST" | jq -r '.commit.author.date')
+          COMMIT=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/commits/$SHA)
+
+          FILES=$(echo "$COMMIT" | jq '.files | length')
+          ADD=$(echo "$COMMIT" | jq '.stats.additions')
+          DEL=$(echo "$COMMIT" | jq '.stats.deletions')
+          DATE=$(echo "$COMMIT" | jq -r '.commit.author.date')
 
           SHORT_SHA=$(echo "$SHA" | cut -c1-7)
 
