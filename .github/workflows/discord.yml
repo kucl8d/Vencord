@@ -77,7 +77,7 @@ jobs:
                 },
                 {
                   \"name\": \"System\",
-                  \"value\": \"Ready\",
+                  \"value\": \"Updated\",
                   \"inline\": false
                 },
                 {
@@ -91,12 +91,12 @@ jobs:
               }
             }]
           }" \
-          
           ${{ secrets.DISCORD_WEBHOOK }}
-            }" \
-            ${{ secrets.DISCORD_WEBHOOK }}
 
-          else
+          }" \
+          ${{ secrets.DISCORD_WEBHOOK }}
+
+                    else
 
             NOW=$(date -u +%s)
             COMMIT_TIME=$(date -d "${{ steps.commit.outputs.date }}" +%s)
@@ -141,10 +141,8 @@ jobs:
                   \"text\": \"Vencord Status\"
                 }
               }]
-              
-              }" \
-              ${{ secrets.DISCORD_WEBHOOK }}
             }" \
             ${{ secrets.DISCORD_WEBHOOK }}
 
-          fi
+
+                             fi
