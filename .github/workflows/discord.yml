@@ -58,7 +58,7 @@ jobs:
               ],
               "footer": {
                 "text": "Vencord Status"
-              },
+              }
             }]
           }' \
           ${{ secrets.DISCORD_WEBHOOK }}
