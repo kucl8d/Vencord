@@ -59,11 +59,6 @@ jobs:
               "footer": {
                 "text": "Vencord Status"
               },
-              "timestamp":
-              
-              ---
-              
-              "${{ github.event.head_commit.timestamp }}"
             }]
           }' \
           ${{ secrets.DISCORD_WEBHOOK }}
