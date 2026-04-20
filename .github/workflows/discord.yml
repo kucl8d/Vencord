@@ -38,22 +38,36 @@ jobs:
         run: |
           NOW=$(date -u +%s)
           COMMIT_TIME=$(date -d "${{ steps.commit.outputs.date }}" +%s)
-
+      
           DIFF=$((NOW - COMMIT_TIME))
+      
           MINUTES=$((DIFF / 60))
-
+          HOURS=$((DIFF / 3600))
+          DAYS=$((DIFF / 86400))
+      
+          # تحديد النص المناسب
+          if [ $MINUTES -lt 60 ]; then
+            TIME_TEXT="$MINUTES minutes ago"
+          elif [ $HOURS -lt 24 ]; then
+            TIME_TEXT="$HOURS hours ago"
+          else
+            TIME_TEXT="$DAYS days ago"
+          fi
+      
+          # المود (نفس نظامك)
           if [ $MINUTES -ge 20 ]; then
             echo "mode=stable" >> $GITHUB_OUTPUT
           else
             echo "mode=update" >> $GITHUB_OUTPUT
           fi
+      
+          echo "time_text=$TIME_TEXT" >> $GITHUB_OUTPUT
 
-          echo "minutes=$MINUTES" >> $GITHUB_OUTPUT
 
       - name: Edit Discord Message (Single Message)
         run: |
           MODE="${{ steps.status.outputs.mode }}"
-          MINUTES="${{ steps.status.outputs.minutes }}"
+          TIME_TEXT="${{ steps.status.outputs.time_text }}"
 
           if [ "$MODE" = "update" ]; then
 
@@ -98,7 +112,7 @@ jobs:
 
           else
 
-            LAST_UPDATE="Before $MINUTES minutes ago"
+            LAST_UPDATE="Before $TIME_TEXT"
 
             curl -H "Content-Type: application/json" \
             -X PATCH \
