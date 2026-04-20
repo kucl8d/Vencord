@@ -45,7 +45,6 @@ jobs:
           HOURS=$((DIFF / 3600))
           DAYS=$((DIFF / 86400))
       
-          # تحديد النص المناسب
           if [ $MINUTES -lt 60 ]; then
             TIME_TEXT="$MINUTES minutes ago"
           elif [ $HOURS -lt 24 ]; then
@@ -54,7 +53,6 @@ jobs:
             TIME_TEXT="$DAYS days ago"
           fi
       
-          # المود (نفس نظامك)
           if [ $MINUTES -ge 20 ]; then
             echo "mode=stable" >> $GITHUB_OUTPUT
           else
