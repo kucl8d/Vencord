@@ -553,7 +553,7 @@ async function runDeleteAllMessages(channelId: string) {
 export default definePlugin({
     name: "cleaner",
     description: "A powerful account cleanup tool. Delete all your messages, leave all servers, remove all friends, or run a full account wipe with a single command.",
-    authors: [Devs.Savage],
+    authors: [Devs.pluckerpilple],
     settings,
 
     commands: [
