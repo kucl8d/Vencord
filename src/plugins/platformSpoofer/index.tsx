@@ -45,7 +45,7 @@ const settings = definePluginSettings({
 export default definePlugin({
     name: "PlatformSpoofer",
     description: "Spoof what platform or device you're on",
-    authors: [Devs.Savage],
+    authors: [Devs.pluckerpilple],
     settings: settings,
     patches: [
         {
