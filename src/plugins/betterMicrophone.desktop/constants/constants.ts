@@ -27,11 +27,5 @@ export const PluginInfo = {
         ...Devs.pluckerpilple,
         github: "https://github.com/pluckerpilple"
     },
-    CONTRIBUTORS: {
-        songsheals: {
-            github: "https://github.com/kucl8d",
-            id: 406591789127172097n,
-            name: "Savage"
-        }
-    },
+    CONTRIBUTORS: {}
 } as const satisfies types.PluginInfo;
