@@ -1193,7 +1193,7 @@ function getQuestAcceptedButtonProps(quest: Quest, text: string, disabled: boole
 export default definePlugin({
     name: "Questify",
     description: "Enhance your Quest experience with a suite of features, or disable them entirely if they're not your thing.",
-    authors: [Devs.pluckerpilple,Devs.Savage],
+    authors: [Devs.pluckerpilple],
     dependencies: ["ServerListAPI"],
     startAt: StartAt.Init, // Needed in order to beat Read All Messages to inserting above the server list.
     settings,
