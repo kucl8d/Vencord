@@ -36,4 +36,4 @@ jobs:
           git add src/plugins/
           git diff --cached --quiet || git commit -m "chore: restore custom plugins after sync"
       - name: Push
-        run: git push origin main
+        run: git push origin main --force
