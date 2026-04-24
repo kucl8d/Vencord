@@ -25,6 +25,7 @@ import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalRoot, Mo
 import { useForceUpdater } from "@utils/react";
 import { Text, useRef, useState } from "@webpack/common";
 import { findComponentByCodeLazy } from "@webpack";
+import { Paginator } from "@vencord/discord-types";
 
 const Paginator = findComponentByCodeLazy("currentPage", "maxVisiblePages", "pageSize", "totalCount");
 
