@@ -23,9 +23,8 @@ import { REVIEWS_PER_PAGE, UserReviewsData } from "@plugins/reviewDB/reviewDbApi
 import { cl } from "@plugins/reviewDB/utils";
 import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalRoot, ModalSize, openModal } from "@utils/modal";
 import { useForceUpdater } from "@utils/react";
-import { Text, useRef, useState } from "@webpack/common";
+import { Paginator, Text, useRef, useState } from "@webpack/common";
 import { findComponentByCodeLazy } from "@webpack";
-import { Paginator } from "@vencord/discord-types";
 
 const Paginator = findComponentByCodeLazy("currentPage", "maxVisiblePages", "pageSize", "totalCount");
 
