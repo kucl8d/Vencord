@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received a copy of the GNU General Public License 
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
@@ -23,7 +23,10 @@ import { REVIEWS_PER_PAGE, UserReviewsData } from "@plugins/reviewDB/reviewDbApi
 import { cl } from "@plugins/reviewDB/utils";
 import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalRoot, ModalSize, openModal } from "@utils/modal";
 import { useForceUpdater } from "@utils/react";
-import { Paginator, Text, useRef, useState } from "@webpack/common";
+import { Text, useRef, useState } from "@webpack/common";
+import { findComponentByCodeLazy } from "@webpack";
+
+const Paginator = findComponentByCodeLazy("currentPage", "maxVisiblePages", "pageSize", "totalCount");
 
 import ReviewComponent from "./ReviewComponent";
 import ReviewsView, { ReviewsInputComponent } from "./ReviewsView";

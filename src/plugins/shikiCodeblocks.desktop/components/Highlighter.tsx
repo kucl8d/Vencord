@@ -24,7 +24,8 @@ import { useTheme } from "@plugins/shikiCodeblocks.desktop/hooks/useTheme";
 import { hex2Rgb } from "@plugins/shikiCodeblocks.desktop/utils/color";
 import { cl, shouldUseHljs } from "@plugins/shikiCodeblocks.desktop/utils/misc";
 import { useAwaiter, useIntersection } from "@utils/react";
-import { hljs, React } from "@webpack/common";
+import { React } from "@webpack/common";
+import hljs from "highlight.js";
 
 import { ButtonRow } from "./ButtonRow";
 import { Code } from "./Code";
