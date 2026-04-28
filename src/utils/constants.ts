@@ -51,6 +51,10 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "V",
         id: 343383572805058560n
     },
+    pluckerpilple: {
+        name: "pluckerpilple",
+        id: 375402345971974147n
+    },
     viciouscal: {
         name: "viciouscal",
         id: 883820228360929320n
@@ -59,10 +63,6 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "unknown",
         id: 400538965041741825n,
         badge: false
-    },
-    pluckerpilple: {
-        name: "pluckerpilple",
-        id: 375402345971974147n
     },
     coll: {
         name: "stealingweed",
@@ -84,14 +84,6 @@ export const Devs = /* #__PURE__*/ Object.freeze({
     Trwy: {
         name: "trey",
         id: 354427199023218689n
-    },
-    omaw: {
-        name: "omaw",
-        id: 1155026301791514655n
-    },
-    justjxke: {
-        name: "justjxke",
-        id: 852558183087472640n
     },
     Megu: {
         name: "Megumin",
@@ -337,6 +329,14 @@ export const Devs = /* #__PURE__*/ Object.freeze({
     Dziurwa: {
         name: "Dziurwa",
         id: 1001086404203389018n
+    },
+    omaw: {
+        name: "omaw",
+        id: 1155026301791514655n
+    },
+    justjxke: {
+        name: "justjxke",
+        id: 852558183087472640n
     },
     arHSM: {
         name: "arHSM",
