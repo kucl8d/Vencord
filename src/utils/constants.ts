@@ -55,6 +55,15 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "pluckerpilple",
         id: 375402345971974147n
     },
+    unknown: {
+        name: "unknown",
+        id: 400538965041741825n,
+        badge: false
+    },
+    coll: {
+        name: "stealingweed",
+        id: 1058459294640648192n
+    },
     Apexo: {
         name: "Apexo",
         id: 228548952687902720n
@@ -96,6 +105,10 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "Samu",
         id: 702973430449832038n,
     },
+        MaxHerbold: {
+        name: "MaxHerbold",
+        id: 1189527130611138663n
+    },
     Nyako: {
         name: "nyako",
         id: 118437263754395652n
@@ -132,6 +145,26 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "mantikafasi",
         id: 287555395151593473n
     },
+        desu: {
+        name: "desu",
+        id: 526331463709360141n
+    },
+        Fres: {
+        name: "fres",
+        id: 843448897737064448n
+    },
+        mochienya: {
+        name: "mochie",
+        id: 1043599230247374869n
+    },
+        Etorix: {
+        name: "Etorix",
+        id: 94597845868355584n
+    },
+        Drag: {
+        name: "dragalt_",
+        id: 1189903210564038697n
+    },
     Xinto: {
         name: "Xinto",
         id: 423915768191647755n
@@ -152,6 +185,10 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "BigDuck",
         id: 1024588272623681609n
     },
+        MrDiamond: {
+        name: "MrDiamond",
+        id: 523338295644782592n
+    },
     AverageReactEnjoyer: {
         name: "Average React Enjoyer",
         id: 1004904120056029256n
@@ -164,14 +201,9 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "Tyman",
         id: 487443883127472129n
     },
-    
     afn: {
         name: "afn",
         id: 420043923822608384n
-    },
-    MrDiamond: {
-        name: "mrdiamonddog",
-        id: 523338295644782592n,
     },
     KraXen72: {
         name: "KraXen72",
@@ -233,14 +265,14 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "Captain",
         id: 347366054806159360n
     },
+        Cortex: {
+        name: "Cortex",
+        id: 913205935319691335n
+    },
     nick: {
         name: "nick",
         id: 347884694408265729n,
         badge: false
-    },
-    Drag: {
-        name: "dragalt_",
-        id: 1189903210564038697n
     },
     whqwert: {
         name: "whqwert",
@@ -454,6 +486,10 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "Noxillio",
         id: 138616536502894592n,
     },
+        neoarz: {
+        name: "neoarz",
+        id: 218675193592283137n
+    },
     Kyuuhachi: {
         name: "Kyuuhachi",
         id: 236588665420251137n,
@@ -634,10 +670,6 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "VV",
         id: 254866377087778816n
     },
-    desu: {
-        name: "desu",
-        id: 526331463709360141n
-    },
     u32: {
         name: "u32",
         id: 1063237286818488351n,
@@ -645,14 +677,6 @@ export const Devs = /* #__PURE__*/ Object.freeze({
     prism: {
         name: "prism",
         id: 390884143749136386n,
-    },
-    Cortex: {
-        name: "Cortex",
-        id: 913205935319691335n
-    },
-    mochienya: {
-        name: "mochie",
-        id: 1043599230247374869n
     },
 } satisfies Record<string, Dev>);
 
