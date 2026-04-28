@@ -27,5 +27,11 @@ export const PluginInfo = {
         ...Devs.pluckerpilple,
         github: "https://github.com/pluckerpilple"
     },
-    CONTRIBUTORS: {}
+    CONTRIBUTORS: {
+        philhk: {
+            github: "https://github.com/philhk",
+            id: 305288513941667851n,
+            name: "philhk"
+        }
+    },
 } as const satisfies types.PluginInfo;

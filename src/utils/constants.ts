@@ -51,14 +51,18 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "V",
         id: 343383572805058560n
     },
-    pluckerpilple: {
-        name: "pluckerpilple",
-        id: 375402345971974147n
+    viciouscal: {
+        name: "viciouscal",
+        id: 883820228360929320n
     },
     unknown: {
         name: "unknown",
         id: 400538965041741825n,
         badge: false
+    },
+    pluckerpilple: {
+        name: "pluckerpilple",
+        id: 375402345971974147n
     },
     coll: {
         name: "stealingweed",

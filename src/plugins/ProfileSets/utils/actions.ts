@@ -19,28 +19,25 @@ function isImageInput(value: unknown): value is string | { imageUri: string; } {
     return typeof value === "object" && isNonNullish(value) && "imageUri" in value && typeof (value as { imageUri: unknown }).imageUri === "string";
 }
 
-function getFreshPendingAvatar(section: PresetSection, guildId?: string): string | null {
-    const pending = (section === "server" && guildId
+function getFreshPendingAvatar(isGuildProfile: boolean, guildId?: string): string | null {
+    const pending = (isGuildProfile && guildId
         ? UserProfileSettingsStore.getPendingChanges?.(guildId)
         : UserProfileSettingsStore.getPendingChanges?.()) ?? {};
     const pendingObj = pending as Record<string, unknown>;
-
-    const candidates = [
-        pendingObj.selectedAvatarRaw,
-        pendingObj.presetAvatarRaw,
-        pendingObj.pendingAvatar,
-        pendingObj.avatar,
-        pendingObj.selectedAvatarProcessed,
-        pendingObj.presetAvatarProcessed
-    ];
-    const selected = candidates.find(isImageInput);
+    const selected = [pendingObj.pendingAvatar].find(isImageInput);
     if (!selected) return null;
     return typeof selected === "string" ? selected : selected.imageUri;
 }
 
-export async function savePreset(name: string, section: PresetSection, guildId?: string) {
-    const profile = await getCurrentProfile(guildId, { isGuildProfile: section === "server" });
-    const freshPendingAvatar = getFreshPendingAvatar(section, guildId);
+export async function savePreset(
+    name: string,
+    section: PresetSection,
+    guildId?: string,
+    options: { isGuildProfile?: boolean; } = {}
+) {
+    const isGuildProfile = options.isGuildProfile ?? section === "server";
+    const profile = await getCurrentProfile(guildId, { isGuildProfile });
+    const freshPendingAvatar = getFreshPendingAvatar(isGuildProfile, guildId);
     const effectiveAvatar = freshPendingAvatar ?? profile.avatarDataUrl ?? null;
 
     const newPreset: ProfilePresetEx = {

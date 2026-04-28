@@ -33,6 +33,7 @@ function getUsername(user: any): string {
 const settings = definePluginSettings({
     showPanel: {
         description: "Show spectators under screenshare panel",
+        authors: [Devs.Fres, Devs.pluckerpilple],
         type: OptionType.BOOLEAN,
         default: true,
         restartNeeded: true
