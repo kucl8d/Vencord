@@ -85,6 +85,14 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "trey",
         id: 354427199023218689n
     },
+    omaw: {
+        name: "omaw",
+        id: 1155026301791514655n
+    },
+    justjxke: {
+        name: "justjxke",
+        id: 852558183087472640n
+    },
     Megu: {
         name: "Megumin",
         id: 545581357812678656n
