@@ -569,7 +569,7 @@ export default definePlugin({
     name: "EditImage",
     description: "edit avatar.",
     authors: [Devs.pluckerpilple],
-    startAt: StartAt.Init,
+    requiresRestart: true,
 
     chatBarButton: {
         icon: Icon,
