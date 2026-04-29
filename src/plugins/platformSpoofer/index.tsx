@@ -4,12 +4,13 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import "./../_misc/styles.css";
+import "@plugins/_misc/styles.css";
 
 import { definePluginSettings } from "@api/Settings";
+import { Forms } from "@webpack/common";
 import { Devs } from "@utils/constants";
 import definePlugin, { OptionType } from "@utils/types";
-import { Forms, UserStore } from "@webpack/common";
+import { UserStore } from "@webpack/common";
 
 const settings = definePluginSettings({
     platform: {
@@ -28,11 +29,11 @@ const settings = definePluginSettings({
             },
             {
                 label: "Mobile",
-                value: "mobile",
+                value: "mobile"
             },
             {
                 label: "Console",
-                value: "embedded",
+                value: "console",
             },
             {
                 label: "VR",
@@ -45,7 +46,16 @@ const settings = definePluginSettings({
 export default definePlugin({
     name: "PlatformSpoofer",
     description: "Spoof what platform or device you're on",
+    tags: ["Utility"],
     authors: [Devs.Drag, Devs.neoarz, Devs.pluckerpilple],
+    settingsAboutComponent: () => (
+        <>
+            <Forms.FormText className="plugin-warning">
+                Mujhid says, can't guarantee this plugin won't get you warned or banned.
+            </Forms.FormText>
+            
+        </>
+    ),
     settings: settings,
     patches: [
         {
@@ -65,15 +75,15 @@ export default definePlugin({
     getPlatform(bypass, userId?: any) {
         const platform = settings.store.platform ?? "desktop";
 
-        if (bypass) {
+        if (bypass || userId === UserStore.getCurrentUser().id) {
             switch (platform) {
                 case "desktop":
                     return { browser: "Discord Client" };
                 case "web":
-                    return { browser: "Chrome" };
+                    return { browser: "Discord Web" };
                 case "mobile":
                     return { browser: "Discord iOS" };
-                case "embedded":
+                case "console":
                     return { browser: "Discord Embedded" };
                 case "vr":
                     return { browser: "Discord VR" };
