@@ -20,7 +20,6 @@ import { Card } from "@components/Card";
 import { Flex } from "@components/Flex";
 import { Switch } from "@components/Switch";
 import { MicrophoneProfile, MicrophoneStore } from "@plugins/betterMicrophone.desktop/stores";
-
 import {
     ProfilableStore,
     SettingsModal,

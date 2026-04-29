@@ -505,7 +505,6 @@ function installExpressionPickerButton() {
         const target =
             (root as HTMLElement).querySelector?.('[class*="expressionPicker"] [class*="header"]')
             ?? (root as HTMLElement).querySelector?.('[class*="emojiPicker"] [class*="header"]')
-            ?? (root as HTMLElement).querySelector?.('[role="dialog"] header')
             ?? null;
 
         if (!target) return;
