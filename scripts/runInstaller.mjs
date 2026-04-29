@@ -25,9 +25,8 @@ import { Readable } from "stream";
 import { finished } from "stream/promises";
 import { fileURLToPath } from "url";
 
-const BASE_URL = "https://github.com/Equicord/Equilotl/releases/latest/download/";
-const INSTALLER_PATH_DARWIN = "Equilotl.app/Contents/MacOS/Equilotl";
-const INSTALLER_APP_DARWIN = "Equilotl.app";
+const BASE_URL = "https://github.com/Vencord/Installer/releases/latest/download/";
+const INSTALLER_PATH_DARWIN = "VencordInstaller.app/Contents/MacOS/VencordInstaller";
 
 const BASE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FILE_DIR = join(BASE_DIR, "dist", "Installer");
@@ -36,11 +35,11 @@ const ETAG_FILE = join(FILE_DIR, "etag.txt");
 function getFilename() {
     switch (process.platform) {
         case "win32":
-            return "EquilotlCli.exe";
+            return "VencordInstallerCli.exe";
         case "darwin":
-            return "Equilotl.MacOS.zip";
+            return "VencordInstaller.MacOS.zip";
         case "linux":
-            return "EquilotlCli-linux";
+            return "VencordInstallerCli-linux";
         default:
             throw new Error("Unsupported platform: " + process.platform);
     }
@@ -54,11 +53,8 @@ async function ensureBinary() {
 
     const downloadName = join(FILE_DIR, filename);
     const outputFile = process.platform === "darwin"
-        ? join(FILE_DIR, INSTALLER_PATH_DARWIN)
+        ? join(FILE_DIR, "VencordInstaller")
         : downloadName;
-    const outputApp = process.platform === "darwin"
-        ? join(FILE_DIR, INSTALLER_APP_DARWIN)
-        : null;
 
     const etag = existsSync(outputFile) && existsSync(ETAG_FILE)
         ? readFileSync(ETAG_FILE, "utf-8")
@@ -66,7 +62,7 @@ async function ensureBinary() {
 
     const res = await fetch(BASE_URL + filename, {
         headers: {
-            "User-Agent": "Equicord (https://github.com/Equicord/Equicord)",
+            "User-Agent": "Vencord (https://github.com/Vendicated/Vencord)",
             "If-None-Match": etag
         }
     });
@@ -81,14 +77,17 @@ async function ensureBinary() {
     writeFileSync(ETAG_FILE, res.headers.get("etag"));
 
     if (process.platform === "darwin") {
-        console.log("Saving zip...");
+        console.log("Unzipping...");
         const zip = new Uint8Array(await res.arrayBuffer());
-        writeFileSync(downloadName, zip);
 
-        console.log("Unzipping app bundle...");
-        execSync(`ditto -x -k '${downloadName}' '${FILE_DIR}'`);
+        const ff = await import("fflate");
+        const bytes = ff.unzipSync(zip, {
+            filter: f => f.name === INSTALLER_PATH_DARWIN
+        })[INSTALLER_PATH_DARWIN];
 
-        console.log("Clearing quarantine from installer app (this is required to run it)");
+        writeFileSync(outputFile, bytes, { mode: 0o755 });
+
+        console.log("Overriding security policy for installer binary (this is required to run it)");
         console.log("xattr might error, that's okay");
 
         const logAndRun = cmd => {
@@ -97,7 +96,8 @@ async function ensureBinary() {
                 execSync(cmd);
             } catch { }
         };
-        logAndRun(`sudo xattr -dr com.apple.quarantine '${outputApp}'`);
+        logAndRun(`sudo spctl --add '${outputFile}' --label "Vencord Installer"`);
+        logAndRun(`sudo xattr -d com.apple.quarantine '${outputFile}'`);
     } else {
         // WHY DOES NODE FETCH RETURN A WEB STREAM OH MY GOD
         const body = Readable.fromWeb(res.body);
@@ -126,9 +126,8 @@ try {
         stdio: "inherit",
         env: {
             ...process.env,
-            EQUICORD_USER_DATA_DIR: BASE_DIR,
-            EQUICORD_DIRECTORY: join(BASE_DIR, "dist/desktop"),
-            EQUICORD_DEV_INSTALL: "1"
+            VENCORD_USER_DATA_DIR: BASE_DIR,
+            VENCORD_DEV_INSTALL: "1"
         }
     });
 } catch {
