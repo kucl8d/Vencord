@@ -9,14 +9,14 @@
  * by Leko and Arjix (src/equicordplugins/moreStickers/utils.tsx)
  */
 
-import { FFmpeg } from "@ffmpeg/ffmpeg";
+import { ffmpeg } from "@ffmpeg/ffmpeg";
 
-let ffmpeg: FFmpeg | null = null;
+let ffmpeg: ffmpeg | null = null;
 let ffmpegLoaded = false;
-let ffmpegLoading: Promise<FFmpeg> | null = null;
+let ffmpegLoading: Promise<ffmpeg> | null = null;
 let conversionCounter = 0;
 
-async function loadFFmpeg(): Promise<FFmpeg> {
+async function loadFFmpeg(): Promise<ffmpeg> {
     if (ffmpegLoaded && ffmpeg) {
         return ffmpeg;
     }
@@ -26,7 +26,7 @@ async function loadFFmpeg(): Promise<FFmpeg> {
     }
 
     ffmpegLoading = (async () => {
-        ffmpeg = new FFmpeg();
+        ffmpeg = new ffmpeg ();
 
         const baseURL = "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm";
 
