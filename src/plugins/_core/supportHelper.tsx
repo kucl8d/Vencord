@@ -24,7 +24,7 @@ import ErrorBoundary from "@components/ErrorBoundary";
 import { Flex } from "@components/Flex";
 import { Link } from "@components/Link";
 import { openSettingsTabModal, UpdaterTab } from "@components/settings";
-import { CONTRIB_ROLE_ID, Devs, DONOR_ROLE_ID, KNOWN_ISSUES_CHANNEL_ID, REGULAR_ROLE_ID, SUPPORT_CATEGORY_ID, SUPPORT_CHANNEL_ID, VENBOT_USER_ID, VENCORD_GUILD_ID } from "@utils/constants";
+import { CONTRIB_ROLE_ID, Devs, DONOR_ROLE_ID, VC_KNOWN_ISSUES_CHANNEL_ID, VC_REGULAR_ROLE_ID, VC_SUPPORT_CATEGORY_ID, SUPPORT_CHANNEL_ID, VENBOT_USER_ID, VC_GUILD_ID, VC_SUPPORT_CHANNEL_ID } from "@utils/constants";
 import { sendMessage } from "@utils/discord";
 import { Logger } from "@utils/Logger";
 import { Margins } from "@utils/margins";
@@ -51,7 +51,7 @@ const AdditionalAllowedChannelIds = [
 
 const TrustedRolesIds = [
     CONTRIB_ROLE_ID, // contributor
-    REGULAR_ROLE_ID, // regular
+    VC_REGULAR_ROLE_ID, // regular
     DONOR_ROLE_ID, // donor
 ];
 
@@ -59,7 +59,7 @@ const AsyncFunction = async function () { }.constructor;
 
 const ShowCurrentGame = getUserSettingLazy<boolean>("status", "showCurrentGame")!;
 
-const isSupportAllowedChannel = (channel: Channel) => channel.parent_id === SUPPORT_CATEGORY_ID || AdditionalAllowedChannelIds.includes(channel.id);
+const isSupportAllowedChannel = (channel: Channel) => channel.parent_id === VC_SUPPORT_CATEGORY_ID || AdditionalAllowedChannelIds.includes(channel.id);
 
 async function forceUpdate() {
     const outdated = await checkForUpdates();
@@ -170,7 +170,7 @@ export default definePlugin({
 
     flux: {
         async CHANNEL_SELECT({ channelId }) {
-            const isSupportChannel = channelId === SUPPORT_CHANNEL_ID || ChannelStore.getChannel(channelId)?.parent_id === SUPPORT_CATEGORY_ID;
+            const isSupportChannel = channelId === SUPPORT_CHANNEL_ID || ChannelStore.getChannel(channelId)?.parent_id === VC_SUPPORT_CATEGORY_ID;
             if (!isSupportChannel) return;
 
             const selfId = UserStore.getCurrentUser()?.id;
@@ -197,7 +197,7 @@ export default definePlugin({
                 }
             }
 
-            const roles = GuildMemberStore.getSelfMember(VENCORD_GUILD_ID)?.roles;
+            const roles = GuildMemberStore.getSelfMember(VC_GUILD_ID)?.roles;
             if (!roles || TrustedRolesIds.some(id => roles.includes(id))) return;
 
             if (!IS_WEB && IS_UPDATER_DISABLED) {
@@ -240,8 +240,8 @@ export default definePlugin({
         const shouldAddUpdateButton =
             !IS_UPDATER_DISABLED
             && (
-                (props.channel.id === KNOWN_ISSUES_CHANNEL_ID) ||
-                (props.channel.parent_id === SUPPORT_CATEGORY_ID && props.message.author.id === VENBOT_USER_ID)
+                (props.channel.id === VC_KNOWN_ISSUES_CHANNEL_ID) ||
+                (props.channel.parent_id === VC_SUPPORT_CATEGORY_ID && props.message.author.id === VENBOT_USER_ID)
             )
             && props.message.content?.toLowerCase().includes("update");
 
@@ -267,7 +267,7 @@ export default definePlugin({
             );
         }
 
-        if (props.channel.parent_id === SUPPORT_CATEGORY_ID && PermissionStore.can(PermissionsBits.SEND_MESSAGES, props.channel)) {
+        if (props.channel.parent_id === VC_SUPPORT_CATEGORY_ID && PermissionStore.can(PermissionsBits.SEND_MESSAGES, props.channel)) {
             if (props.message.content.includes("/vencord-debug") || props.message.content.includes("/vencord-plugins")) {
                 buttons.push(
                     <Button
@@ -325,7 +325,7 @@ export default definePlugin({
                 Please do not private message Vencord plugin developers for support!
                 <br />
                 Instead, use the Vencord support channel: {Parser.parse("https://discord.com/channels/1015060230222131221/1026515880080842772")}
-                {!ChannelStore.getChannel(SUPPORT_CHANNEL_ID) && " (Click the link to join)"}
+                {!ChannelStore.getChannel(VC_SUPPORT_CHANNEL_ID) && " (Click the link to join)"}
             </Card>
         );
     }, { noop: true }),
