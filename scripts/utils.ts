@@ -249,7 +249,7 @@ export async function parseFile(fileName: string) {
             .join(posixSep)
             .replace(/\/index\.([jt]sx?)$/, "")
             .replace(/^src\/plugins\//, "")
-            .replace(/^src\/equicordplugins\//, "");
+            
 
         return [data] as const;
     }
