@@ -13,8 +13,8 @@ import { EquicordDevs } from "@utils/constants";
 import { removeFromArray } from "@utils/misc";
 import definePlugin from "@utils/types";
 
-import { Data } from "./components/data";
-import DataUI from "./components/ui";
+import { Data } from "@plugins/iRememberYou/components/data";
+import DataUI from "@plugins/iRememberYou/components/ui";
 
 export default definePlugin({
     name: "IRememberYou",
