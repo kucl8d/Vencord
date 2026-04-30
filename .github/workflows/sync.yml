@@ -41,6 +41,6 @@ jobs:
 
       - name: Trigger DevBuild Workflow
         run: |
-          gh workflow run build.yml --ref main
+          gh workflow run build.yml --ref main -R ${{ github.repository }}
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
