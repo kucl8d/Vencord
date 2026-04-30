@@ -51,7 +51,7 @@ export default definePlugin({
     settingsAboutComponent: () => (
         <>
             <Forms.FormText className="plugin-warning">
-                Mujhid says, can't guarantee this plugin won't get you warned or banned.
+                Vich says, can't guarantee this plugin won't get you warned or banned.
             </Forms.FormText>
             
         </>
