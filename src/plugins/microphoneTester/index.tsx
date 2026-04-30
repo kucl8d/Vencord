@@ -80,7 +80,7 @@ export default definePlugin({
     name: "MicrophoneTester",
     description: "Test your mic to hear microphone Quality . ",
     tags: ["Utility", "Voice"],
-    authors: [Devs.pluckerpilple],
+    authors: [Devs.Vich],
 
     start() {
         setTimeout(mount, 2000);

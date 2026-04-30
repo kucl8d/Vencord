@@ -70,9 +70,9 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "V",
         id: 343383572805058560n
     },
-    pluckerpilple: {
-        name: "pluckerpilple",
-        id: 375402345971974147n
+    Vich: {
+        name: "Vichlunsie",
+        id: 406591789127172097n
     },
     viciouscal: {
         name: "viciouscal",

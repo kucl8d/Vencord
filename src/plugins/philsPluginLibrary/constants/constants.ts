@@ -24,7 +24,7 @@ export const PluginInfo: types.PluginInfo = {
     PLUGIN_NAME: "PhilsPluginLibrary",
     DESCRIPTION: "A library for phil's plugins",
     AUTHOR: {
-        ...Devs.pluckerpilple,
-        github: "https://github.com/pluckerpilple"
+        ...Devs.Vich,
+        github: "https://github.com/vichlunsie"
     },
 } as const;

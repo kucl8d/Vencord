@@ -22,7 +22,7 @@ import {
     Toasts,
     UserStore
 } from "@webpack/common";
-import type { Channel, User } from "discord-types/general";
+import type { Channel, User } from "@vencord/discord-types";
 import type { PropsWithChildren, SVGProps } from "react";
 
 const HeaderBarIcon = LazyComponent(() => {
@@ -285,7 +285,7 @@ const UserContext: NavContextMenuPatchCallback = (children, { user }: UserContex
 export default definePlugin({
     name: "FollowUser",
     description: "Adds a follow option in the user context menu to always be in the same VC as them",
-    authors: [Devs.D3SOX, Devs.pluckerpilple],
+    authors: [Devs.D3SOX],
 
     settings,
 
