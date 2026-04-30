@@ -24,7 +24,7 @@ import definePlugin, { ReporterTestable } from "@utils/types";
 import previewExampleText from "file://previewExample.tsx";
 
 import { shiki } from "./api/shiki";
-import { HighlighterContainer } from "./components/Highlighter";
+import { createHighlighter } from "./components/Highlighter";
 import deviconStyle from "./devicon.css?managed";
 import { settings } from "./settings";
 import { DeviconSetting } from "./types";
