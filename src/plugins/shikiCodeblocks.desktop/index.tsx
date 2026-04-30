@@ -16,19 +16,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./shiki.css";
+import "@plugins/shikiCodeblocks.desktop/shiki.css";
 
 import { enableStyle } from "@api/Styles";
 import { Devs } from "@utils/constants";
 import definePlugin, { ReporterTestable } from "@utils/types";
 import previewExampleText from "file://previewExample.tsx";
 
-import { shiki } from "./api/shiki";
-import { createHighlighter } from "./components/Highlighter";
+import { shiki } from "@plugins/shikiCodeblocks.desktop/api/shiki";
+import { HighlighterContainer } from "@plugins/shikiCodeblocks.desktop/components/Highlighter";
 import deviconStyle from "./devicon.css?managed";
-import { settings } from "./settings";
-import { DeviconSetting } from "./types";
-import { clearStyles } from "./utils/createStyle";
+import { settings } from "@plugins/shikiCodeblocks.desktop/settings";
+import { DeviconSetting } from "@plugins/shikiCodeblocks.desktop/types";
+import { clearStyles } from "@plugins/shikiCodeblocks.desktop/utils/createStyle";
 
 export default definePlugin({
     name: "ShikiCodeblocks",
