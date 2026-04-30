@@ -47,7 +47,7 @@ export default definePlugin({
     name: "PlatformSpoofer",
     description: "Spoof what platform or device you're on",
     tags: ["Utility"],
-    authors: [Devs.Drag, Devs.neoarz, Devs.pluckerpilple],
+    authors: [Devs.Drag, Devs.neoarz, Devs.Vich],
     settingsAboutComponent: () => (
         <>
             <Forms.FormText className="plugin-warning">
