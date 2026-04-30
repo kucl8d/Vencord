@@ -161,8 +161,7 @@ export default definePlugin({
 
     patches: [
         {
-            // Same find as ReviewDB
-            find: "#{intl::USER_PROFILE_FRIEND_REQUEST_TOAST}",
+            find: ".hasAvatarForGuild(null==",
             replacement: {
                 match: /currentUser:\i,guild:\i[^}]*?\}\)(?=])(?<=user:(\i),bio:null==(\i)\?.+?)/,
                 replace: "$&,$self.profilePopoutComponent({ user: $1, displayProfile: $2 })"
