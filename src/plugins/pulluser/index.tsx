@@ -241,6 +241,7 @@ export default definePlugin({
     name: "PullUser",
     description: "Drag users with you across voice channels. Right-click users to add them to your pull list - they'll automatically follow you whenever you switch voice channels. Like having your own personal entourage.",
     authors: [Devs.Vich],
+    isVich: true,
     settings,
 
     start() {

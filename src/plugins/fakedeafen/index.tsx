@@ -166,6 +166,7 @@ export default definePlugin({
     description: "You're deafened but you're not.",
     dependencies: ["PhilsPluginLibrary"],
     authors: [Devs.desu,Devs.Vich],
+    isVich: true,
 
     patches: [
         {

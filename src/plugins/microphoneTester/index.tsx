@@ -81,6 +81,7 @@ export default definePlugin({
     description: "Test your mic to hear microphone Quality . ",
     tags: ["Utility", "Voice"],
     authors: [Devs.Vich],
+    isVich: true,
 
     start() {
         setTimeout(mount, 2000);

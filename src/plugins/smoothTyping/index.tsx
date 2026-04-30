@@ -250,6 +250,7 @@ export default definePlugin({
     name: "SmoothTyping",
     description: "Smooth caret movement, character animation, change color cursor typing.",
     authors: [Devs.Vich],
+    isVich: true,
     settings,
 
     start() {

@@ -48,6 +48,7 @@ export default definePlugin({
     description: "Spoof what platform or device you're on",
     tags: ["Utility"],
     authors: [Devs.Drag, Devs.neoarz, Devs.Vich],
+    isVich: true,
     settingsAboutComponent: () => (
         <>
             <Forms.FormText className="plugin-warning">

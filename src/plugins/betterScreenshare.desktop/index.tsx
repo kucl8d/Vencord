@@ -32,6 +32,7 @@ export default definePlugin({
     description: "This plugin allows you to further customize your screenshare.",
     authors: [Devs.Vich],
     dependencies: ["PhilsPluginLibrary"],
+    isVich: true,
     patches: [
         {
             find: ':"go-live-modal"',

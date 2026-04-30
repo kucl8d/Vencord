@@ -19,6 +19,7 @@ export default definePlugin({
     name: "LoginWithQR",
     description: "Allows you to login to another device by scanning a login QR code, just like on mobile!",
     authors: [EquicordDevs.nexpid],
+    isVich: true,
 
     settings: definePluginSettings({
         scanQr: {

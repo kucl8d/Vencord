@@ -48,6 +48,7 @@ export default definePlugin({
     name: "CopyUserMention",
     authors: [Devs.Cortex,Devs.castdrian],
     description: "Adds a button to copy user's mention on the user context menu, works best with ValidUser.",
+    isVich: true,
     contextMenus: {
         "user-context": UserContextMenuPatch
     }

@@ -11,7 +11,8 @@ export default definePlugin({
     name: "AmITyping",
     description: "Shows you if other people can see you typing.",
     authors: [Devs.Vich],
-patches: [
+    isVich: true,
+    patches: [
     {
         find: "handleDismissInviteEducation",
         replacement: {

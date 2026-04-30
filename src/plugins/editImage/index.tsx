@@ -569,6 +569,7 @@ export default definePlugin({
     description: "edit avatar.",
     authors: [Devs.Vich],
     requiresRestart: true,
+    isVich: true,
 
     chatBarButton: {
         icon: Icon,

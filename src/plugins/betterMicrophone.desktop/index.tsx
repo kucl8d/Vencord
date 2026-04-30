@@ -33,6 +33,7 @@ export default definePlugin({
     authors: [Devs.Vich],
     dependencies: ["PhilsPluginLibrary"],
     requiresRestart: true,
+    isVich: true,
 
     start(): void {
         initMicrophoneStore();
