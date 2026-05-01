@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import "./styles.css";
+import "@plugins/questify/styles.css";
 
 import { showNotification } from "@api/Notifications";
 import { plugins } from "@api/PluginManager";
