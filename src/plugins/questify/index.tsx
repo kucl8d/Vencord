@@ -4,13 +4,16 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import "@plugins/questify/styles.css";
+import "./styles.css";
 
 import { showNotification } from "@api/Notifications";
+import { plugins } from "@api/PluginManager";
 import { addServerListElement, removeServerListElement, ServerListRenderPosition } from "@api/ServerList";
-import { Settings } from "@api/Settings";
-import { ErrorBoundary, openPluginModal } from "@components/index";
-import { copyToClipboard, Devs } from "@utils/index";
+import { migratePluginToSettings, Settings } from "@api/Settings";
+import ErrorBoundary from "@components/ErrorBoundary";
+import { openPluginModal } from "@components/settings";
+import { Devs } from "@utils/constants";
+import { copyToClipboard } from "@utils/index";
 import definePlugin, { PluginNative, StartAt } from "@utils/types";
 import { findStoreLazy, onceReady } from "@webpack";
 import { ContextMenuApi, Menu, NavigationRouter, RestAPI, useEffect, useState } from "@webpack/common";
@@ -19,7 +22,6 @@ import { JSX } from "react";
 import { addIgnoredQuest, addRerenderCallback, autoFetchCompatible, fetchAndAlertQuests, maximumAutoFetchIntervalValue, minimumAutoFetchIntervalValue, questIsIgnored, removeIgnoredQuest, rerenderQuests, settings, startAutoFetchingQuests, stopAutoFetchingQuests, validateAndOverwriteIgnoredQuests } from "./settings";
 import { ActiveQuestIntervalsMap, ExcludedQuestMap, GuildlessServerListItem, Quest, QuestIcon, QuestMap, QuestStatus, QuestTaskType, RGB } from "./utils/components";
 import { adjustRGB, decimalToRGB, fetchAndDispatchQuests, formatLowerBadge, getFormattedNow, getIgnoredQuestIDs, getQuestProgress, getQuestStatus, getQuestTarget, getQuestTask, isDarkish, leftClick, middleClick, normalizeQuestName, q, QuestifyLogger, questPath, QuestsStore, refreshQuest, reportPlayGameQuestProgress, reportVideoQuestProgress, rightClick, setIgnoredQuestIDs, waitUntilEnrolled } from "./utils/misc";
-import { devs } from "../../../scripts/utils";
 
 const AuthorizedAppsStore = findStoreLazy("AuthorizedAppsStore");
 let initialQuestDataFetched = false;
@@ -90,7 +92,7 @@ export function QuestButton(): JSX.Element {
         if (todo === "open-quests") {
             NavigationRouter.transitionTo(questPath);
         } else if (todo === "plugin-settings") {
-            openPluginModal(Vencord.Plugins.plugins.Questify);
+            openPluginModal(plugins.Questify);
         } else if (todo === "context-menu") {
             ContextMenuApi.openContextMenu(event, () => (
                 <Menu.Menu
@@ -208,7 +210,7 @@ function shouldHideBadgeOnUserProfiles(): boolean {
 function shouldHideQuestPopup(quest: Quest | null): boolean {
     const {
         disableQuestsPopupAboveAccountPanel,
-        disableQuestsEverything,
+        disableQuestsEverything
     } = settings.use([
         "disableQuestsPopupAboveAccountPanel",
         "disableQuestsEverything",
@@ -1352,12 +1354,16 @@ function resetQuestsToResume(quest?: Quest): void {
     }
 }
 
+// Drop support for QuestCompleter and migrate to Questify settings.
+migratePluginToSettings(true, "Questify", "QuestCompleter", "completeVideoQuestsInBackground", "completeGameQuestsInBackground", "completeAchievementQuestsInBackground");
+
 export default definePlugin({
     name: "Questify",
     description: "Enhance your Quest experience with a suite of features, or disable them entirely if they're not your thing.",
+    tags: ["Appearance", "Customisation", "Privacy", "Utility"],
     authors: [Devs.Etorix],
-    dependencies: ["ServerListAPI"],
-    isVich: false,
+    dependencies: ["AudioPlayerAPI", "ServerListAPI"],
+    isVich: true,
     startAt: StartAt.Init, // Needed in order to beat Read All Messages to inserting above the server list.
     settings,
 
@@ -1402,29 +1408,6 @@ export default definePlugin({
             }
         },
         {
-            find: "could not play audio",
-            group: true,
-            replacement: [
-                {
-                    // Enables external audio sources for playing audio.
-                    match: /(?<=new Audio;\i\.src=)/,
-                    replace: "this.name.startsWith('https')?this.name:"
-                },
-                {
-                    // Adds an optional callback to the audio player. This is needed to detect
-                    // when the audio has finished playing as playWithListener() relies on a duration
-                    // variable which is never present.
-                    match: /(constructor\(\i,\i,\i,\i)(\){)/,
-                    replace: "$1,callback$2this.callback=callback||null,"
-                },
-                {
-                    // Makes use of the callback if provided.
-                    match: /(?<=.onended=\(\)=>)(this.destroyAudio\(\))/,
-                    replace: "{this.callback?this.callback():null;$1;}"
-                }
-            ]
-        },
-        {
             // Hides Quests tab in the Discovery page.
             find: "GLOBAL_DISCOVERY_SIDEBAR},",
             replacement: [
@@ -1454,7 +1437,7 @@ export default definePlugin({
                     replace: "const shouldHideSponsoredQuestBanner=$self.shouldHideSponsoredQuestBanner();"
                 },
                 {
-                    match: /(?<=\i,{onAssetLoad:\i,onQuestCtaClick:\i)(?=}\))/,
+                    match: /(?<=\{onAssetLoad:\i,onQuestCtaClick:\i)(?=\}\),)/,
                     replace: ",shouldHideSponsoredQuestBanner"
                 },
                 {
@@ -1571,7 +1554,7 @@ export default definePlugin({
             group: true,
             replacement: [
                 {
-                    // Extracts the custom dropdown prop before the variable is overwritten.
+                    // Extracts a custom feedback prop before the variable is overwritten.
                     match: /(?<=forwardRef\(function\((\i),\i\){)/,
                     replace: "const vcDynamicDropdownFeedback=$1.feedback;"
                 },
@@ -1722,15 +1705,15 @@ export default definePlugin({
             group: true,
             replacement: [
                 {
-                    match: /(?<=let \i,)(?=.{0,160}?fetchPolicy:"cache-and-network",)/,
-                    replace: "questRerenderTrigger,questifySorted,"
-                },
-                {
                     // Run Questify's sort function every time due to hook requirements but return
                     // early if not applicable. If the sort method is set to "Questify", replace the
                     // Quests with the sorted ones. Also, setup a trigger to rerender the memo.
-                    match: /(?<=\.filters\),.{0,30})(\i.useMemo\(\(\)=>{)(?=if\(0===(\i).length\))/,
-                    replace: "questRerenderTrigger=$self.useQuestRerender(),questifySorted=$self.sortQuests($2,arguments[1].sortMethod!==\"questify\"),$1if(arguments[1].sortMethod===\"questify\"){$2=questifySorted;};"
+                    match: /(?<=quests:(\i).{0,150}"use_filtered_quests".{0,25}\i\.id,\i\]\)\)),/,
+                    replace: ";const questRerenderTrigger=$self.useQuestRerender();const questifySorted=$self.sortQuests($1,arguments[1].sortMethod!==\"questify\");let "
+                },
+                {
+                    match: /(?=if\(0===(\i).length\).{0,100}\.sortMethod&&\i\.current)/,
+                    replace: "if(arguments[1].sortMethod===\"questify\"){$1=questifySorted;};"
                 },
                 {
                     // Account for Quest status changes.
@@ -1828,6 +1811,24 @@ export default definePlugin({
             ]
         },
         {
+            // Adds support for dev://experiment/2025-12-quest-cta-refactor-rollout
+            find: "WATCH_VIDEO?async()=>{await",
+            replacement: [
+                {
+                    match: /(?=let{quest:)/,
+                    replace: "const questifyText=$self.getQuestUnacceptedButtonText(arguments[0].quest)??$self.getQuestAcceptedButtonText(arguments[0].quest);"
+                },
+                {
+                    match: /(?<=}\),)(\i\?\.\(\))/,
+                    replace: "!$self.processQuestForAutoComplete(arguments[0].quest,true)&&($1)"
+                },
+                {
+                    match: /(?<=,text:)(\i),icon:\i/,
+                    replace: "questifyText??$1"
+                }
+            ]
+        },
+        {
             // Same thing as above, maybe? Different location though.
             find: ".ACCEPT_QUEST),",
             replacement: [
@@ -1842,10 +1843,6 @@ export default definePlugin({
                 {
                     match: /(?<="primary",onClick:)(\i)/,
                     replace: "()=>{!$self.processQuestForAutoComplete(arguments[0].quest,true)&&$1()}"
-                },
-                {
-                    match: /(?<=\}\),)(\i\?\.\(\))/,
-                    replace: "!$self.processQuestForAutoComplete(arguments[0].quest,true)&&($1)"
                 },
             ]
         },
@@ -1897,9 +1894,7 @@ export default definePlugin({
     ],
 
     contextMenus: {
-        "quests-entry": QuestTileContextMenu,
-        "downloadify-active-quest-context-menu": QuestTileContextMenu,
-        "downloadify-claimed-quest-context-menu": (children, props) => QuestTileContextMenu(children, props, true)
+        "quests-entry": QuestTileContextMenu
     },
 
     flux: {
