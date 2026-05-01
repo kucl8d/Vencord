@@ -7,7 +7,7 @@
 import { managedStyleRootNode } from "@api/Styles";
 import { createAndAppendStyle } from "@utils/css";
 
-import { hexToHSL } from "@plugins/clientTheme/utils/colorUtils";
+import { hexToHSL } from "./colorUtils";
 const VARS_STYLE_ID = "vc-clientTheme-vars";
 const OVERRIDES_STYLE_ID = "vc-clientTheme-overrides";
 type StyleId = typeof VARS_STYLE_ID | typeof OVERRIDES_STYLE_ID;

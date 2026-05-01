@@ -4,27 +4,22 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { Flex } from "@components/Flex";
-import { DonateButton, InviteButton } from "@components/settings/DonateButton";
+import DonateButton from "@components/settings/DonateButton";
 import BadgeAPI from "@plugins/_api/badges";
-import { DONOR_ROLE_ID, VC_GUILD_ID } from "@utils/constants";
-import { GuildMemberStore } from "@webpack/common";
+import { DONOR_ROLE_ID, VENCORD_GUILD_ID } from "@utils/constants";
+import { Button, GuildMemberStore } from "@webpack/common";
 
 export const isDonor = (userId: string) => !!(
-    BadgeAPI.getDonorBadges(userId)?.length > 0
-    || GuildMemberStore?.getMember(VC_GUILD_ID, userId)?.roles.includes(DONOR_ROLE_ID)
+    (BadgeAPI.getDonorBadges(userId)?.length ?? 0) > 0
+    || GuildMemberStore?.getMember(VENCORD_GUILD_ID, userId)?.roles.includes(DONOR_ROLE_ID)
 );
 
-export function DonateButtonComponent({ donated = false }) {
+export function DonateButtonComponent() {
     return (
-        <Flex>
-            <DonateButton
-                equicord={true}
-                className={!donated ? "vc-donate-support-button" : ""}
-                style={{ marginTop: "1em" }} />
-            <InviteButton
-                className={!donated ? "vc-invite-support-button" : ""}
-                style={{ marginTop: "1em" }} />
-        </Flex>
+        <DonateButton
+            look={Button.Looks.FILLED}
+            color={Button.Colors.WHITE}
+            style={{ marginTop: "1em" }}
+        />
     );
 }

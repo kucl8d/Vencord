@@ -17,7 +17,7 @@
 */
 
 import { UserStore } from "@webpack/common";
-import { User } from "@vencord/discord-types";
+import { User } from "discord-types/general";
 
 export const createDummyUser = (props: Partial<User>) => new (UserStore.getCurrentUser().constructor as any)(props);
 export const openURL = (url: string) => VencordNative.native.openExternal(url);

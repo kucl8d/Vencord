@@ -282,7 +282,7 @@ export default definePlugin({
         this.eagerLoad(false);
 
         if (!IS_WEB) {
-            const Native = VencordNative.pluginHelpers.ConsoleShortcuts as PluginNative<typeof import("@plugins/consoleShortcuts/native")>;
+            const Native = VencordNative.pluginHelpers.ConsoleShortcuts as PluginNative<typeof import("./native")>;
             Native.initDevtoolsOpenEagerLoad();
         }
     },

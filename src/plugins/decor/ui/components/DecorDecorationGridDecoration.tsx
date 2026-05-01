@@ -10,7 +10,7 @@ import { ContextMenuApi } from "@webpack/common";
 import type { HTMLProps } from "react";
 
 import { DecorationGridDecoration } from ".";
-import DecorationContextMenu from "@plugins/decor/ui/components/DecorationContextMenu";
+import DecorationContextMenu from "./DecorationContextMenu";
 
 interface DecorDecorationGridDecorationProps extends HTMLProps<HTMLDivElement> {
     decoration: Decoration;

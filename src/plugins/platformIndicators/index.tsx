@@ -18,10 +18,10 @@
 
 import "./style.css";
 
-import { addNicknameIcon, removeNicknameIcon } from "@api/NicknameIcons";
 import { addProfileBadge, BadgePosition, BadgeUserArgs, ProfileBadge, removeProfileBadge } from "@api/Badges";
 import { addMemberListDecorator, removeMemberListDecorator } from "@api/MemberListDecorators";
 import { addMessageDecoration, removeMessageDecoration } from "@api/MessageDecorations";
+import { addNicknameIcon, removeNicknameIcon } from "@api/NicknameIcons";
 import { Settings } from "@api/Settings";
 import { Devs } from "@utils/constants";
 import definePlugin, { OptionType } from "@utils/types";
@@ -85,7 +85,9 @@ function getPlatformTooltip(platform: DiscordPlatform): string {
 
 const PlatformIcon = ({ platform, status, small }: { platform: DiscordPlatform, status: OnlineStatus; small: boolean; }) => {
     const tooltip = getPlatformTooltip(platform as DiscordPlatform);
+
     const Icon = Icons[platform] ?? Icons.desktop;
+
     return <Icon color={useStatusFillColor(status)} tooltip={tooltip} small={small} />;
 };
 
@@ -117,8 +119,11 @@ function getBadges({ userId }: BadgeUserArgs): ProfileBadge[] {
     if (Settings.plugins.PlatformIndicators.profileLocation === "next-to-name") return [];
 
     const user = UserStore.getUser(userId);
+
     if (!user || user.bot) return [];
+
     ensureOwnStatus(user);
+
     const status = PresenceStore.getClientStatus(user.id);
     if (!status) return [];
 
@@ -157,6 +162,9 @@ const PlatformIndicator = ({ user, small = false }: { user: User; small?: boolea
 
     return (
         <span className="vc-platform-indicator" style={{ gap: "2px" }}>
+
+
+
             {icons}
         </span>
     );
@@ -194,7 +202,7 @@ const indicatorLocations = {
 export default definePlugin({
     name: "PlatformIndicators",
     description: "Adds platform indicators (Desktop, Mobile, Web...) to users",
-    tags: ["Appearance"],
+
     authors: [Devs.kemo, Devs.TheSun, Devs.Nuckyz, Devs.Ven],
     dependencies: ["MessageDecorationsAPI", "MemberListDecoratorsAPI", "NicknameIconsAPI"],
 
@@ -221,7 +229,7 @@ export default definePlugin({
                 ));
                 if (!icons.length) return null;
                 return <span className="vc-platform-indicator" style={{ gap: "2px" }}>{icons}</span>;
-            }, -1); 
+            }, -1);
         }
     },
 
@@ -238,10 +246,12 @@ export default definePlugin({
             predicate: () => Settings.plugins.PlatformIndicators.colorMobileIndicator,
             replacement: [
                 {
+
                     match: /\.STATUS_TYPING;switch(?=.+?(if\(\i\)return \i\.\i\.Masks\.STATUS_ONLINE_MOBILE))/,
                     replace: ".STATUS_TYPING;$1;switch"
                 },
                 {
+
                     match: /switch\(\i\)\{case \i\.\i\.ONLINE:(if\(\i\)return\{[^}]+\})/,
                     replace: "$1;$&"
                 }
@@ -252,14 +262,17 @@ export default definePlugin({
             predicate: () => Settings.plugins.PlatformIndicators.colorMobileIndicator,
             replacement: [
                 {
+
                     match: /\i===\i\.\i\.ONLINE&&(?=.{0,70}\.AVATAR_STATUS_MOBILE_16;)/,
                     replace: ""
                 },
                 {
+
                     match: /(?<=\(\i\.status,)(\i)(?=,\{.{0,15}isMobile:(\i))/,
                     replace: '$2?"online":$1'
                 },
                 {
+
                     match: /(?<=\i&&!\i)&&\i===\i\.\i\.ONLINE/,
                     replace: ""
                 }
@@ -269,6 +282,7 @@ export default definePlugin({
             find: "}isMobileOnline(",
             predicate: () => Settings.plugins.PlatformIndicators.colorMobileIndicator,
             replacement: {
+
                 match: /(?<=\i\[\i\.\i\.MOBILE\])===\i\.\i\.ONLINE/,
                 replace: "!= null"
             }
@@ -281,6 +295,7 @@ export default definePlugin({
                 return [key, {
                     type: OptionType.BOOLEAN,
                     description: `Show indicators ${value.description.toLowerCase()}`,
+
                     restartNeeded: true,
                     default: true
                 }];

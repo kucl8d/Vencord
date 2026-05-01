@@ -17,8 +17,8 @@ import { Paragraph } from "@components/Paragraph";
 import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalProps, ModalRoot, ModalSize, openModal } from "@utils/modal";
 import { TextArea, TextInput, useState } from "@webpack/common";
 
-import { parseTagArguments } from "@plugins/customCommands/index";
-import { addTag, getTag, Tag } from "@plugins/customCommands/settings";
+import { parseTagArguments } from ".";
+import { addTag, getTag, Tag } from "./settings";
 
 export function openCreateTagModal(initialValue: Tag = { name: "", message: "" }) {
     openModal(modalProps => (

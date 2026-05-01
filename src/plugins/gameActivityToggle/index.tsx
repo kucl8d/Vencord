@@ -17,7 +17,7 @@
 */
 
 import { isPluginEnabled } from "@api/PluginManager";
-import { definePluginSettings } from "@api/Settings"; 
+import { definePluginSettings } from "@api/Settings";
 import { getUserSettingLazy } from "@api/UserSettings";
 import ErrorBoundary from "@components/ErrorBoundary";
 import VencordToolboxPlugin from "@plugins/vencordToolbox";
@@ -26,7 +26,7 @@ import definePlugin, { OptionType } from "@utils/types";
 import { findComponentByCodeLazy } from "@webpack";
 import { Menu } from "@webpack/common";
 
-import managedStyle from "@plugins/gameActivityToggle/style.css";
+import managedStyle from "./style.css?managed";
 
 const Button = findComponentByCodeLazy(".GREEN,positionKeyStemOverride:");
 

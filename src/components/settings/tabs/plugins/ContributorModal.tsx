@@ -9,7 +9,7 @@ import "./ContributorModal.css";
 import { useSettings } from "@api/Settings";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { Link } from "@components/Link";
-import { VencordDevsById } from "@utils/constants";
+import { DevsById } from "@utils/constants";
 import { classNameFactory } from "@utils/css";
 import { fetchUserProfile } from "@utils/discord";
 import { classes, pluralise } from "@utils/misc";
@@ -51,8 +51,8 @@ function ContributorModal({ user }: { user: User; }) {
 
     const plugins = useMemo(() => {
         const allPlugins = Object.values(Plugins);
-        const pluginsByAuthor = VencordDevsById[user.id]
-            ? allPlugins.filter(p => p.authors.includes(VencordDevsById[user.id]))
+        const pluginsByAuthor = DevsById[user.id]
+            ? allPlugins.filter(p => p.authors.includes(DevsById[user.id]))
             : allPlugins.filter(p => p.authors.some(a => a.name === user.username));
 
         return pluginsByAuthor

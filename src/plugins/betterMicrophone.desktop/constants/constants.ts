@@ -16,17 +16,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { Devs } from "@utils/constants";
-
 import { types } from "@plugins/philsPluginLibrary";
+import { Devs } from "@utils/constants";
 
 export const PluginInfo = {
     PLUGIN_NAME: "BetterMicrophone",
     DESCRIPTION: "This plugin allows you to further customize your microphone.",
-    AUTHOR: {
-        ...Devs.Vich,
-        github: "https://github.com/vichlunsie"
-    },
+        AUTHOR: {
+            ...Devs.Vich,
+            github: "https://github.com/vichlunsie"
+        },
     CONTRIBUTORS: {
         philhk: {
             github: "https://github.com/philhk",

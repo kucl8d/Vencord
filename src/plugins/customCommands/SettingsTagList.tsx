@@ -12,8 +12,8 @@ import { DeleteIcon, PencilIcon } from "@components/Icons";
 import { Margins } from "@components/margins";
 import { Paragraph } from "@components/Paragraph";
 
-import { openCreateTagModal } from "@plugins/customCommands/CreateTagModal";
-import { removeTag, settings } from "@plugins/customCommands/settings";
+import { openCreateTagModal } from "./CreateTagModal";
+import { removeTag, settings } from "./settings";
 
 export function SettingsTagList() {
     const { tagsList } = settings.use(["tagsList"]);

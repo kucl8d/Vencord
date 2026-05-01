@@ -16,12 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { ScreenshareSettingsModal } from "@plugins/betterScreenshare.desktop/components";
+import { PluginInfo } from "@plugins/betterScreenshare.desktop/constants";
+import { screenshareAudioStore, screenshareStore } from "@plugins/betterScreenshare.desktop/stores";
 import { openModalLazy } from "@utils/modal";
 
-import Plugin from "@plugins/betterScreenshare.desktop/index";
-import { ScreenshareSettingsModal } from "@plugins/betterScreenshare.desktop/components";
-import { PluginInfo } from "@plugins/betterScreenshare.desktop/constants/constants";
-import { screenshareAudioStore, screenshareStore } from "@plugins/betterScreenshare.desktop/stores";
+import Plugin from "..";
 
 const onScreenshareModalDone = () => {
     const { screenshareAudioPatcher, screensharePatcher } = Plugin;

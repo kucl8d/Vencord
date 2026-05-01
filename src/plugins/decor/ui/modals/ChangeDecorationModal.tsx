@@ -26,8 +26,8 @@ import { Queue } from "@utils/Queue";
 import { User } from "@vencord/discord-types";
 import { Alerts, Button, FluxDispatcher, Forms, GuildStore, NavigationRouter, Parser, Text, Tooltip, useEffect, UserStore, UserSummaryItem, UserUtils, useState } from "@webpack/common";
 
-import { openCreateDecorationModal } from "@plugins/decor/ui/modals/CreateDecorationModal";
-import { openGuidelinesModal } from "@plugins/decor/ui/modals/GuidelinesModal";
+import { openCreateDecorationModal } from "./CreateDecorationModal";
+import { openGuidelinesModal } from "./GuidelinesModal";
 
 function usePresets() {
     const [presets, setPresets] = useState<Preset[]>([]);

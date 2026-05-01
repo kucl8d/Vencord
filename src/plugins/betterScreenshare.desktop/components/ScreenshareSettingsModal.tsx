@@ -23,9 +23,6 @@ import { Switch } from "@components/Switch";
 import { MicrophoneSettingsModal } from "@plugins/betterMicrophone.desktop/components";
 import { PluginInfo } from "@plugins/betterScreenshare.desktop/constants";
 import { ScreenshareAudioProfile, ScreenshareAudioStore, ScreenshareProfile, ScreenshareStore } from "@plugins/betterScreenshare.desktop/stores";
-
-
-
 import {
     MediaEngineStore,
     openURL,

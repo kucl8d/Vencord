@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "@plugins/betterSessions/styles.css";
+import "./styles.css";
 
 import { showNotification } from "@api/Notifications";
 import { definePluginSettings } from "@api/Settings";
@@ -26,9 +26,9 @@ import definePlugin, { OptionType } from "@utils/types";
 import { findComponentByCodeLazy, findCssClassesLazy, findStoreLazy } from "@webpack";
 import { Constants, React, RestAPI, SettingsRouter, Tooltip } from "@webpack/common";
 
-import { NewButton, RenameButton } from "@plugins/betterSessions/components/RenameButton";
-import { Session, SessionInfo } from "@plugins/betterSessions/types";
-import { fetchNamesFromDataStore, getDefaultName, GetOsColor, GetPlatformIcon, savedSessionsCache, saveSessionsToDataStore } from "@plugins/betterSessions/utils";
+import { NewButton, RenameButton } from "./components/RenameButton";
+import { Session, SessionInfo } from "./types";
+import { fetchNamesFromDataStore, getDefaultName, GetOsColor, GetPlatformIcon, savedSessionsCache, saveSessionsToDataStore } from "./utils";
 
 const AuthSessionsStore = findStoreLazy("AuthSessionsStore");
 

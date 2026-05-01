@@ -20,7 +20,7 @@ import * as DataStore from "@api/DataStore";
 import { UserStore } from "@webpack/common";
 
 import { ChromeIcon, DiscordIcon, EdgeIcon, FirefoxIcon, IEIcon, MobileIcon, OperaIcon, SafariIcon, UnknownIcon } from "./components/icons";
-import { SessionInfo } from "@plugins/betterSessions/types";
+import { SessionInfo } from "./types";
 
 const getDataKey = () => `BetterSessions_savedSessions_${UserStore.getCurrentUser().id}`;
 

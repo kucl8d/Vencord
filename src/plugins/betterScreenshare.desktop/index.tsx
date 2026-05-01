@@ -16,23 +16,21 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-
-import { Devs } from "@utils/constants";
-import definePlugin from "@utils/types";
-
-import { addSettingsPanelButton, Emitter, removeSettingsPanelButton, ScreenshareSettingsIcon } from "@plugins/philsPluginLibrary";
 import { PluginInfo } from "@plugins/betterScreenshare.desktop/constants";
 import { openScreenshareModal } from "@plugins/betterScreenshare.desktop/modals";
 import { ScreenshareAudioPatcher, ScreensharePatcher } from "@plugins/betterScreenshare.desktop/patchers";
 import { GoLivePanelWrapper, replacedSubmitFunction } from "@plugins/betterScreenshare.desktop/patches";
 import { initScreenshareAudioStore, initScreenshareStore } from "@plugins/betterScreenshare.desktop/stores";
+import { addSettingsPanelButton, Emitter, removeSettingsPanelButton, ScreenshareSettingsIcon } from "@plugins/philsPluginLibrary";
+import { Devs } from "@utils/constants";
+import definePlugin from "@utils/types";
 
 export default definePlugin({
     name: "BetterScreenshare",
     description: "This plugin allows you to further customize your screenshare.",
     authors: [Devs.Vich],
-    dependencies: ["PhilsPluginLibrary"],
     isVich: true,
+    dependencies: ["PhilsPluginLibrary"],
     patches: [
         {
             find: ':"go-live-modal"',
@@ -49,13 +47,6 @@ export default definePlugin({
             }
         }
     ],
-
-
-
-
-
-
-
     start(): void {
         initScreenshareStore();
         initScreenshareAudioStore();
@@ -63,11 +54,11 @@ export default definePlugin({
         this.screensharePatcher = new ScreensharePatcher().patch();
         this.screenshareAudioPatcher = new ScreenshareAudioPatcher().patch();
 
-        addSettingsPanelButton({ 
-            name: PluginInfo.PLUGIN_NAME, 
-            icon: ScreenshareSettingsIcon, 
-            tooltipText: "Screenshare Settings", 
-            onClick: openScreenshareModal 
+        addSettingsPanelButton({
+            name: PluginInfo.PLUGIN_NAME,
+            icon: ScreenshareSettingsIcon,
+            tooltipText: "Screenshare Settings",
+            onClick: openScreenshareModal
         });
     },
     stop(): void {

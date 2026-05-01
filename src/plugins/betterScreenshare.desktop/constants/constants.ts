@@ -16,9 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { Devs } from "@utils/constants";
-
 import { types } from "@plugins/philsPluginLibrary";
+import { Devs } from "@utils/constants";
 
 export const PluginInfo = {
     PLUGIN_NAME: "BetterScreenshare",
@@ -34,5 +33,5 @@ export const PluginInfo = {
             name: "philhk"
         },
      },
-    README: "https://github.com/vichlunsie/Vencord/tree/main/src/plugins/betterScreenshare.desktop/README.md",
+    README: "https://github.com/vichlunsie/Vencord/tree/main/src/plugins/betterScreenshare.desktop"
 } as const satisfies types.PluginInfo;

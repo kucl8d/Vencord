@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "@plugins/hideAttachments/styles.css";
+import "./styles.css";
 
 import { get, set } from "@api/DataStore";
 import { updateMessage } from "@api/MessageUpdater";

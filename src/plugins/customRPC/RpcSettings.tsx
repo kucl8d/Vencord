@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import "@plugins/customRPC/settings.css";
+import "./settings.css";
 
 import { isPluginEnabled } from "@api/PluginManager";
 import { Divider } from "@components/Divider";

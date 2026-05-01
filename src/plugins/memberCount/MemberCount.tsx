@@ -9,9 +9,9 @@ import { isObjectEmpty } from "@utils/misc";
 import { ChannelStore, GuildMemberCountStore, PermissionsBits, PermissionStore, SelectedChannelStore, Tooltip, useEffect, useStateFromStores, VoiceStateStore } from "@webpack/common";
 
 import { ChannelMemberStore, cl, numberFormat, settings, ThreadMemberListStore } from ".";
-import { CircleIcon } from "@plugins/memberCount/CircleIcon";
-import { OnlineMemberCountStore } from "@plugins/memberCount/OnlineMemberCountStore";
-import { VoiceIcon } from "@plugins/memberCount/VoiceIcon";
+import { CircleIcon } from "./CircleIcon";
+import { OnlineMemberCountStore } from "./OnlineMemberCountStore";
+import { VoiceIcon } from "./VoiceIcon";
 
 export function MemberCount({ isTooltip, tooltipGuildId }: { isTooltip?: true; tooltipGuildId?: string; }) {
     const { voiceActivity } = settings.use(["voiceActivity"]);

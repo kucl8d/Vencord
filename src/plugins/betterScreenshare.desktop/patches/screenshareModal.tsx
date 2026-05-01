@@ -16,15 +16,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { Flex } from "@components/Flex";
-import { React } from "@webpack/common";
 import { Settings } from "@api/Settings";
-
-import { SettingsModalCard, SettingsModalCardItem } from "@plugins/philsPluginLibrary";
-import Plugin from "@plugins/betterScreenshare.desktop/index";
+import { Flex } from "@components/Flex";
 import { AudioSourceSelect, OpenScreenshareSettingsButton } from "@plugins/betterScreenshare.desktop/components";
-import { PluginInfo } from "@plugins/betterScreenshare.desktop//constants/constants";
+import { PluginInfo } from "@plugins/betterScreenshare.desktop/constants";
 import { screenshareStore } from "@plugins/betterScreenshare.desktop/stores";
+import { SettingsModalCard, SettingsModalCardItem } from "@plugins/philsPluginLibrary";
+import { React } from "@webpack/common";
+
+import Plugin from "..";
 
 const ReplacedStreamSettings = () => {
     const { use } = screenshareStore;

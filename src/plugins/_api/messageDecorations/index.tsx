@@ -19,7 +19,7 @@
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
 
-import managedStyle from "@plugins/_api/messageDecorations/style.css";
+import managedStyle from "./style.css?managed";
 
 export default definePlugin({
     name: "MessageDecorationsAPI",

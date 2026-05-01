@@ -16,4 +16,4 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export * from "@plugins/betterScreenshare.desktop/patches/screenshareModal";
+export * from "./screenshareModal";

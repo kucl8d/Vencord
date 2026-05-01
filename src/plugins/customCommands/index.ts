@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "@plugins/customCommands/styles.css";
+import "./styles.css";
 
 import { ApplicationCommandInputType, ApplicationCommandOptionType, findOption, registerCommand, sendBotMessage } from "@api/Commands";
 import { migratePluginSettings } from "@api/Settings";
@@ -25,8 +25,8 @@ import { sendMessage } from "@utils/discord";
 import definePlugin from "@utils/types";
 import { FluxDispatcher, MessageActions, PendingReplyStore } from "@webpack/common";
 
-import { openCreateTagModal } from "@plugins/customCommands/CreateTagModal";
-import { getTag, getTags, removeTag, settings, Tag } from "@plugins/customCommands/settings";
+import { openCreateTagModal } from "./CreateTagModal";
+import { getTag, getTags, removeTag, settings, Tag } from "./settings";
 
 const CustomCommandsMarker = Symbol("CustomCommands");
 const ArgumentRegex = /{{(.+?)}}/g;
