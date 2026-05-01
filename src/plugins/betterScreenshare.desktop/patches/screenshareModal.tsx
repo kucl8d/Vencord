@@ -20,11 +20,11 @@ import { Flex } from "@components/Flex";
 import { React } from "@webpack/common";
 import { Settings } from "@api/Settings";
 
-import { SettingsModalCard, SettingsModalCardItem } from "../../philsPluginLibrary";
-import Plugin from "..";
-import { AudioSourceSelect, OpenScreenshareSettingsButton } from "../components";
-import { PluginInfo } from "../constants";
-import { screenshareStore } from "../stores";
+import { SettingsModalCard, SettingsModalCardItem } from "@plugins/philsPluginLibrary";
+import Plugin from "@plugins/betterScreenshare.desktop/index";
+import { AudioSourceSelect, OpenScreenshareSettingsButton } from "@plugins/betterScreenshare.desktop/components";
+import { PluginInfo } from "@plugins/betterScreenshare.desktop//constants/constants";
+import { screenshareStore } from "@plugins/betterScreenshare.desktop/stores";
 
 const ReplacedStreamSettings = () => {
     const { use } = screenshareStore;

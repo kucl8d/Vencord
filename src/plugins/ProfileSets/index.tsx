@@ -4,15 +4,15 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import "./styles.css";
+import "@plugins/ProfileSets/styles.css";
 
 import { definePluginSettings } from "@api/Settings";
 import { classNameFactory } from "@utils/css";
 import definePlugin, { OptionType } from "@utils/types";
 import { React } from "@webpack/common";
 
-import { PresetManager } from "./components/presetManager";
-import { loadPresets, PresetSection } from "./utils/storage";
+import { PresetManager } from "@plugins/ProfileSets/components/presetManager";
+import { loadPresets, PresetSection } from "@plugins/ProfileSets/utils/storage";
 import { Devs } from "@utils/constants";
 
 export const cl = classNameFactory("vc-profile-presets-");

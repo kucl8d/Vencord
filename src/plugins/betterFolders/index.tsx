@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./style.css";
+import "@plugins/betterFolders/style.css";
 
 import { definePluginSettings } from "@api/Settings";
 import { Devs } from "@utils/constants";
@@ -27,7 +27,7 @@ import { findByPropsLazy, findStoreLazy } from "@webpack";
 import { FluxDispatcher } from "@webpack/common";
 import { ReactNode } from "react";
 
-import FolderSideBar from "./FolderSideBar";
+import FolderSideBar from "@plugins/betterFolders/FolderSideBar";
 
 enum FolderIconDisplay {
     Never,

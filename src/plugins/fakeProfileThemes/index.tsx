@@ -17,7 +17,7 @@
 */
 
 // This plugin is a port from Alyxia's Vendetta plugin
-import "./styles.css";
+import "@plugins/fakeProfileThemes/styles.css";
 
 import { definePluginSettings } from "@api/Settings";
 import { Divider } from "@components/Divider";

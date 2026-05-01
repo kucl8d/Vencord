@@ -12,8 +12,8 @@ import { closeAllModals } from "@utils/modal";
 import { OptionType } from "@utils/types";
 import { FluxDispatcher, Forms } from "@webpack/common";
 
-import DecorPlugin from ".";
-import DecorSection from "./ui/components/DecorSection";
+import DecorPlugin from "@plugins/decor/index";
+import DecorSection from "@plugins/decor/ui/components/DecorSection";
 
 export const settings = definePluginSettings({
     changeDecoration: {

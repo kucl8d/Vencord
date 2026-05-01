@@ -18,10 +18,10 @@
 
 import { openModalLazy } from "@utils/modal";
 
-import Plugin from "..";
-import { ScreenshareSettingsModal } from "../components";
-import { PluginInfo } from "../constants";
-import { screenshareAudioStore, screenshareStore } from "../stores";
+import Plugin from "@plugins/betterScreenshare.desktop/index";
+import { ScreenshareSettingsModal } from "@plugins/betterScreenshare.desktop/components";
+import { PluginInfo } from "@plugins/betterScreenshare.desktop/constants/constants";
+import { screenshareAudioStore, screenshareStore } from "@plugins/betterScreenshare.desktop/stores";
 
 const onScreenshareModalDone = () => {
     const { screenshareAudioPatcher, screensharePatcher } = Plugin;

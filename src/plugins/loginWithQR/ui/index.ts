@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import "./styles.css";
+import "@plugins/loginWithQR/ui/styles.css";
 
 import { classNameFactory } from "@api/Styles";
 import { findComponentByCodeLazy } from "@webpack";

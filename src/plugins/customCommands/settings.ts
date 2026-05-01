@@ -8,8 +8,8 @@ import { unregisterCommand } from "@api/Commands";
 import { definePluginSettings } from "@api/Settings";
 import { OptionType } from "@utils/types";
 
-import { registerTagCommand } from ".";
-import { SettingsTagList } from "./SettingsTagList";
+import { registerTagCommand } from "@plugins/customCommands/index";
+import { SettingsTagList } from "@plugins/customCommands/SettingsTagList";
 
 export const settings = definePluginSettings({
     tagsList: {

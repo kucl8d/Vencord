@@ -18,6 +18,6 @@
 
 import { Logger } from "@utils/Logger";
 
-import { PluginInfo } from "../constants";
+import { PluginInfo } from "@plugins/betterScreenshare.desktop/constants/constants";
 
 export const logger = new Logger(PluginInfo.PLUGIN_NAME);

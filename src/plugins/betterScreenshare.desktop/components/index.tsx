@@ -16,6 +16,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export * from "./AudioSourceSelect";
-export * from "./OpenScreenshareSettingsButton";
-export * from "./ScreenshareSettingsModal";
+export * from "@plugins/betterScreenshare.desktop/components/AudioSourceSelect";
+export * from "@plugins/betterScreenshare.desktop/components/OpenScreenshareSettingsButton";
+export * from "@plugins/betterScreenshare.desktop/components/ScreenshareSettingsModal";

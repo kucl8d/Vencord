@@ -41,7 +41,7 @@ import { JSX } from "react";
 import gitHash from "~git-hash";
 import plugins, { PluginMeta } from "~plugins";
 
-import SettingsPlugin from "./settings";
+import SettingsPlugin from "@plugins/_core/settings";
 
 const CodeBlockRe = /```js\n(.+?)```/s;
 

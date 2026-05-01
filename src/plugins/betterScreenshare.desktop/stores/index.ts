@@ -16,5 +16,5 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export * from "./screenshareAudioStore";
-export * from "./screenshareStore";
+export * from "@plugins/betterScreenshare.desktop/stores/screenshareAudioStore";
+export * from "@plugins/betterScreenshare.desktop/stores/screenshareStore";

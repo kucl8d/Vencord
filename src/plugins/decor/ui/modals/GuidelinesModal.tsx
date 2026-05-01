@@ -11,7 +11,7 @@ import { cl, DecorationModalClasses, requireAvatarDecorationModal } from "@plugi
 import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalProps, ModalRoot, ModalSize, openModal } from "@utils/modal";
 import { Button, Forms, Text } from "@webpack/common";
 
-import { openCreateDecorationModal } from "./CreateDecorationModal";
+import { openCreateDecorationModal } from "@plugins/decor/ui/modals/CreateDecorationModal";
 
 function GuidelinesModal(props: ModalProps) {
     return <ModalRoot

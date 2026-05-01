@@ -9,8 +9,8 @@ import { ProfilePreset } from "@vencord/discord-types";
 import { findStoreLazy } from "@webpack";
 import { showToast, Toasts } from "@webpack/common";
 
-import { getCurrentProfile } from "./profile";
-import { addPreset, movePresetInArray, presets, PresetSection, type ProfilePresetEx, removePreset, replaceAllPresets, savePresetsData, updatePreset } from "./storage";
+import { getCurrentProfile } from "@plugins/ProfileSets/utils/profile";
+import { addPreset, movePresetInArray, presets, PresetSection, type ProfilePresetEx, removePreset, replaceAllPresets, savePresetsData, updatePreset } from "@plugins/ProfileSets/utils/storage";
 
 const UserProfileSettingsStore = findStoreLazy("UserProfileSettingsStore");
 

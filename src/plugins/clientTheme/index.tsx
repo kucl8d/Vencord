@@ -4,14 +4,14 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import "./clientTheme.css";
+import "@plugins/clientTheme/clientTheme.css";
 
 import { definePluginSettings } from "@api/Settings";
 import { Devs } from "@utils/constants";
 import definePlugin, { OptionType, StartAt } from "@utils/types";
 
-import { ResetThemeColorComponent, ThemeSettingsComponent } from "./components/Settings";
-import { disableClientTheme, startClientTheme } from "./utils/styleUtils";
+import { ResetThemeColorComponent, ThemeSettingsComponent } from "@plugins/clientTheme/components/Settings";
+import { disableClientTheme, startClientTheme } from "@plugins/clientTheme/utils/styleUtils";
 
 export const settings = definePluginSettings({
     color: {

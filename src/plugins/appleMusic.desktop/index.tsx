@@ -11,7 +11,7 @@ import { Activity, ActivityAssets, ActivityButton } from "@vencord/discord-types
 import { ActivityFlags, ActivityStatusDisplayType, ActivityType } from "@vencord/discord-types/enums";
 import { ApplicationAssetUtils, FluxDispatcher, Forms } from "@webpack/common";
 
-const Native = VencordNative.pluginHelpers.AppleMusicRichPresence as PluginNative<typeof import("./native")>;
+const Native = VencordNative.pluginHelpers.AppleMusicRichPresence as PluginNative<typeof import("@plugins/appleMusic.desktop/native")>;
 
 export interface TrackData {
     name: string;

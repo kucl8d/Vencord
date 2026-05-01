@@ -10,9 +10,9 @@ import definePlugin, { OptionType } from "@utils/types";
 import { Button, Forms, Menu } from "@webpack/common";
 import { ReactElement } from "react";
 
-import { preload, unload } from "./images";
-import { cl } from "./ui";
-import openQrModal from "./ui/modals/QrModal";
+import { preload, unload } from "@plugins/loginWithQR/images";
+import { cl } from "@plugins/loginWithQR/ui";
+import openQrModal from "@plugins/loginWithQR/ui/modals/QrModal";
 import { Devs, EquicordDevs } from "@utils/constants";
 
 export default definePlugin({

@@ -10,7 +10,7 @@ import { findCssClassesLazy } from "@webpack";
 import { React } from "@webpack/common";
 import { JSX } from "react";
 
-import Grid, { GridProps } from "./Grid";
+import Grid, { GridProps } from "@plugins/decor/ui/components/Grid";
 
 const ScrollerClasses = findCssClassesLazy("managedReactiveScroller", "thin");
 

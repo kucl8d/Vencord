@@ -24,10 +24,10 @@ import {
 } from "@webpack/common";
 import { MutableRefObject, ReactElement } from "react";
 
-import { images } from "../../images";
-import jsQR, { QRCode } from "../../lib/jsQR";
-import { cl, QrCodeIcon, Spinner, SpinnerTypes } from "..";
-import openVerifyModal from "./VerifyModal";
+import { images } from "@plugins/loginWithQR/images";
+import jsQR, { QRCode } from "@plugins/loginWithQR/lib/jsQR";
+import { cl, QrCodeIcon, Spinner, SpinnerTypes } from "@plugins/loginWithQR/ui";
+import openVerifyModal from "@plugins/loginWithQR/ui/modals/VerifyModal";
 
 enum LoginStateType {
     Idle,

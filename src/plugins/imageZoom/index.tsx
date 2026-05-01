@@ -26,9 +26,9 @@ import { createRoot, Menu } from "@webpack/common";
 import { JSX } from "react";
 import type { Root } from "react-dom/client";
 
-import { Magnifier, MagnifierProps } from "./components/Magnifier";
-import { ELEMENT_ID } from "./constants";
-import managedStyle from "./styles.css?managed";
+import { Magnifier, MagnifierProps } from "@plugins/imageZoom/components/Magnifier";
+import { ELEMENT_ID } from "@plugins/imageZoom/constants";
+import managedStyle from "@plugins/imageZoom/styles.css";
 
 export const settings = definePluginSettings({
     saveZoomValues: {

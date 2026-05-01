@@ -19,7 +19,7 @@
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
 
-import managedStyle from "./style.css?managed";
+import managedStyle from "@plugins/_api/memberListDecorators/style.css";
 
 export default definePlugin({
     name: "MemberListDecoratorsAPI",

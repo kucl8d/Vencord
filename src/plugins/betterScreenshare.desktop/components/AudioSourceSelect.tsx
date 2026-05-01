@@ -19,8 +19,8 @@
 import { Select, useEffect, useState } from "@webpack/common";
 import React from "react";
 
-import { MediaEngineStore, types } from "../../philsPluginLibrary";
-import { screenshareStore } from "../stores";
+import { MediaEngineStore, types } from "@plugins/philsPluginLibrary";
+import { screenshareStore } from "@plugins/betterScreenshare.desktop/stores";
 
 export const AudioSourceSelect = (props?: React.ComponentProps<typeof Select>) => {
     const { use } = screenshareStore;

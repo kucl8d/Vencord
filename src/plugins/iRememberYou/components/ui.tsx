@@ -13,7 +13,7 @@ import { classNameFactory } from "@utils/css";
 import { copyWithToast, openUserProfile } from "@utils/discord";
 import { Avatar, Clickable, ContextMenuApi, Menu, React, TextInput, Tooltip, UserStore } from "@webpack/common";
 
-import { Data, IStorageUser } from "./data";
+import { Data, IStorageUser } from "@plugins/iRememberYou/components/data";
 
 const cl = classNameFactory("vc-i-remember-you-");
 

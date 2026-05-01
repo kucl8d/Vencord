@@ -9,10 +9,10 @@ import { classes } from "@utils/misc";
 import { ProfilePreset } from "@vencord/discord-types";
 import { ContextMenuApi, Menu, React, TextInput } from "@webpack/common";
 
-import { cl } from "..";
-import { deletePreset, movePreset, renamePreset, updatePresetField } from "../utils/actions";
-import { getCurrentProfile } from "../utils/profile";
-import { PresetSection, type ProfilePresetEx } from "../utils/storage";
+import { cl } from "@plugins/ProfileSets/index";
+import { deletePreset, movePreset, renamePreset, updatePresetField } from "@plugins/ProfileSets/utils/actions";
+import { getCurrentProfile } from "@plugins/ProfileSets/utils/profile";
+import { PresetSection, type ProfilePresetEx } from "@plugins/ProfileSets/utils/storage";
 
 interface PresetListProps {
     presets: ProfilePresetEx[];

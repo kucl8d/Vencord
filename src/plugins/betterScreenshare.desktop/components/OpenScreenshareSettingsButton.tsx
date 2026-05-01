@@ -19,7 +19,7 @@
 import { Button } from "@webpack/common";
 import React from "react";
 
-import { openScreenshareModal } from "../modals";
+import { openScreenshareModal } from "@plugins/betterScreenshare.desktop/modals";
 
 export interface OpenScreenshareSettingsButtonProps {
     title?: string;

@@ -11,12 +11,12 @@ import { openModal } from "@utils/modal";
 import { findComponentByCodeLazy } from "@webpack";
 import { React, SelectedGuildStore, TextInput, useStateFromStores } from "@webpack/common";
 
-import { cl, settings } from "../index";
-import { exportPresets, ImportDecision, importPresets, savePreset } from "../utils/actions";
-import { loadPresetAsPending } from "../utils/profile";
-import { loadPresets, presets, PresetSection, setCurrentPresetIndex } from "../utils/storage";
-import { ImportProfilesModal } from "./confirmModal";
-import { PresetList } from "./presetList";
+import { cl, settings } from "@plugins/ProfileSets/index";
+import { exportPresets, ImportDecision, importPresets, savePreset } from "@plugins/ProfileSets/utils/actions";
+import { loadPresetAsPending } from "@plugins/ProfileSets/utils/profile";
+import { loadPresets, presets, PresetSection, setCurrentPresetIndex } from "@plugins/ProfileSets/utils/storage";
+import { ImportProfilesModal } from "@plugins/ProfileSets/components/confirmModal";
+import { PresetList } from "@plugins/ProfileSets/components/presetList";
 
 const PRESETS_PER_PAGE = 5;
 
