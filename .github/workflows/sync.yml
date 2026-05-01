@@ -32,7 +32,7 @@ jobs:
 
       - name: Merge upstream
         run: |
-          git merge upstream/main --no-edit
+          git merge upstream/main -X theirs --no-edit
 
       - name: Check conflicts
         run: |
