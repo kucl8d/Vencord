@@ -1,18 +1,14 @@
 name: Upstream Sync
-
 on:
     schedule:
         - cron: "0 */6 * * *"
     workflow_dispatch: {}
-
 permissions:
     contents: write
     pull-requests: write
-
 concurrency:
     group: upstream-sync
     cancel-in-progress: false
-
 jobs:
     sync:
         name: Sync fork with upstream
@@ -23,12 +19,10 @@ jobs:
               with:
                   fetch-depth: 0
                   persist-credentials: true
-
             - name: Configure Git user
               run: |
                   git config user.name "${{ secrets.GIT_USERNAME }}"
                   git config user.email "${{ secrets.GIT_EMAIL }}"
-
             - name: Add & fetch upstream
               run: |
                   DESIRED_URL="https://github.com/Vendicated/Vencord.git"
@@ -36,64 +30,55 @@ jobs:
                     CURRENT_URL=$(git remote get-url upstream)
                     if [ "$CURRENT_URL" != "$DESIRED_URL" ]; then
                       git remote set-url upstream "$DESIRED_URL"
-                      echo "Updated existing upstream remote URL from $CURRENT_URL to $DESIRED_URL"
-                    else
-                      echo "Upstream remote already correctly set to $DESIRED_URL"
                     fi
                   else
                     git remote add upstream "$DESIRED_URL"
-                    echo "Added upstream remote $DESIRED_URL"
                   fi
                   git fetch upstream main
-
             - name: Merge upstream changes
+              id: merge
               env:
                   TARGET_BRANCH: main
               run: |
                   set -u
                   git checkout "$TARGET_BRANCH"
                   git fetch origin "$TARGET_BRANCH"
-
                   LOCAL_SHA=$(git rev-parse HEAD)
                   UPSTREAM_SHA=$(git rev-parse upstream/main)
-
                   if [ "$LOCAL_SHA" = "$UPSTREAM_SHA" ]; then
                     echo "Already up to date."
+                    echo "synced=false" >> $GITHUB_OUTPUT
                     exit 0
                   fi
-
                   echo "Attempting merge of upstream/main into $TARGET_BRANCH"
-
                   if git merge --no-commit --no-ff upstream/main; then
                     if git diff --cached --quiet; then
-                      echo "No changes after merge (fast-forward or identical)."
+                      echo "No changes after merge."
+                      echo "synced=false" >> $GITHUB_OUTPUT
                       if [ "$(git rev-parse HEAD)" != "$LOCAL_SHA" ]; then
                         git push origin "$TARGET_BRANCH"
                       fi
                       exit 0
                     fi
-
                     if git rev-parse -q --verify MERGE_HEAD >/dev/null; then
                       git commit -m "chore: sync upstream ($(date -u +%Y-%m-%d))"
-                    else
-                      echo "Fast-forward occurred; no merge commit required."
                     fi
-
                     git push origin "$TARGET_BRANCH"
+                    echo "synced=true" >> $GITHUB_OUTPUT
                     echo "Sync complete."
                   else
-                    echo "::warning::Merge conflict detected; aborting and skipping. Manual intervention required if you want these changes now."
+                    echo "::warning::Merge conflict detected; aborting."
                     git merge --abort || true
                     git reset --hard "$LOCAL_SHA"
+                    echo "synced=false" >> $GITHUB_OUTPUT
                     exit 0
                   fi
-
             - name: Trigger DevBuild Workflow
+              if: steps.merge.outputs.synced == 'true'
               run: |
                   gh workflow run build.yml --ref main -R ${{ github.repository }}
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
             - name: Summary
               if: always()
               run: |
