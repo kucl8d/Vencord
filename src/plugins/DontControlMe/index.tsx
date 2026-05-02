@@ -189,7 +189,7 @@ function addPinChannelContextMenu(children: any, { channel }: { channel: any; })
 export default definePlugin({
     name: "DontControlMe",
     description: "Automatically reconnects, unmutes, undeafens, and prevents movement or disconnection from a pinned channel.",
-    authors: [Devs.Vich],
+    authors: [Devs.cute],
     isVich: true,
     settings,
 
