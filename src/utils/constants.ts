@@ -52,7 +52,7 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         id: 343383572805058560n
     },
     Vich: {
-        name: "Vichlunsie",
+        name: "vichounscial",
         id: 406591789127172097n
     },
     viciouscal: {
