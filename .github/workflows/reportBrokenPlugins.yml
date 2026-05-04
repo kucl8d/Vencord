@@ -20,7 +20,7 @@ on:
 
 jobs:
     TestPlugins:
-        if: github.repository == 'kucl8d/Vencord'
+        if: github.repository == 'vichounscial/Vencord'
         runs-on: ubuntu-latest
 
         steps:
