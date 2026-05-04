@@ -32,7 +32,7 @@ export default definePlugin({
     name: "JumpToStart",
     description: "Adds a context menu option to jump to the start of a channel/DM",
     authors: [Devs.Samwich],
-    isVich: true,
+    isphklie: true,
     contextMenus:
     {
         "channel-context": MenuPatch,

@@ -23,8 +23,8 @@ export const PluginInfo = {
     PLUGIN_NAME: "BetterScreenshare",
     DESCRIPTION: "This plugin allows you to further customize your screen sharing.",
     AUTHOR: {
-        ...Devs.Vich,
-        github: "https://github.com/vichounscial"
+        ...Devs.phklie,
+        github: "https://github.com/phklie"
     },
     CONTRIBUTORS: {
                 philhk: {
@@ -33,5 +33,5 @@ export const PluginInfo = {
             name: "philhk"
         },
      },
-    README: "https://github.com/vichlunsie/Vencord/tree/main/src/plugins/betterScreenshare.desktop"
+    README: "https://github.com/phklie/Vencord/tree/main/src/plugins/betterScreenshare.desktop"
 } as const satisfies types.PluginInfo;

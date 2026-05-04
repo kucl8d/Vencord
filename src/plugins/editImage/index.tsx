@@ -567,9 +567,9 @@ const ChatButton: ChatBarButtonFactory = ({ isAnyChat }) => {
 export default definePlugin({
     name: "EditImage",
     description: "edit avatar.",
-    authors: [Devs.Vich],
+    authors: [Devs.phklie],
     requiresRestart: true,
-    isVich: true,
+    isphklie: true,
 
     chatBarButton: {
         icon: Icon,

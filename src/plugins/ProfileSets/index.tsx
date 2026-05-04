@@ -35,7 +35,7 @@ export default definePlugin({
     name: "ProfileSets",
     description: "Allows you to save and load different profile presets, via the Profile Section in Settings.",
     authors: [Devs.justjxke,Devs.omaw],
-    isVich: true,
+    isphklie: true,
     settings,
     patches: [
         {

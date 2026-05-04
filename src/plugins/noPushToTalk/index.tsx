@@ -12,7 +12,7 @@ export default definePlugin({
     description: "Bypasses the push-to-talk requirement for voice activity in channels that enforce it.",
     tags: ["Servers", "Voice"],
     authors: [Devs.omaw],
-    isVich: true,
+    isphklie: true,
     patches: [
         {
             find: "PermissionVADStore",

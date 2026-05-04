@@ -165,8 +165,8 @@ export default definePlugin({
     name: "FakeDeafen",
     description: "You're deafened but you're not.",
     dependencies: ["PhilsPluginLibrary"],
-    authors: [Devs.desu,Devs.Vich],
-    isVich: true,
+    authors: [Devs.desu,Devs.phklie],
+    isphklie: true,
 
     patches: [
         {

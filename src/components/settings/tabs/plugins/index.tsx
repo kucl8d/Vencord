@@ -79,7 +79,7 @@ const enum SearchStatus {
     NEW,
     USER_PLUGINS,
     API_PLUGINS,
-    VICH_PLUGINS 
+    PHKLIE_PLUGINS 
 }
 
 function ExcludedPluginsList({ search }: { search: string; }) {
@@ -180,8 +180,8 @@ function PluginSettings() {
             case SearchStatus.NEW:
                 if (!newPlugins?.includes(plugin.name)) return false;
                 break;
-            case SearchStatus.VICH_PLUGINS: 
-                if (!(plugin as any).isVich) return false;
+            case SearchStatus.PHKLIE_PLUGINS: 
+                if (!(plugin as any).isphklie) return false;
                 break;               
             case SearchStatus.USER_PLUGINS:
                 if (!PluginMeta[plugin.name]?.userPlugin) return false;
@@ -289,7 +289,7 @@ function PluginSettings() {
                     <Select
                         options={[
                             { label: "Show All", value: SearchStatus.ALL, default: true },
-                            { label: "Show Vich Plugins", value: SearchStatus.VICH_PLUGINS },
+                            { label: "Show Phklie Plugins", value: SearchStatus.PHKLIE_PLUGINS },
                             { label: "Show Enabled", value: SearchStatus.ENABLED },
                             { label: "Show Disabled", value: SearchStatus.DISABLED },
                             { label: "Show New", value: SearchStatus.NEW },

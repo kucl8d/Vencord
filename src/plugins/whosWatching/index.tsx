@@ -84,7 +84,7 @@ export default definePlugin({
     description: "Hover over the screenshare icon to view what users are watching your stream",
     tags: ["Activity"],
     authors: [Devs.Fres, Devs.thororen],
-    isVich: true,
+    isphklie: true,
     settings,
     patches: [
         {

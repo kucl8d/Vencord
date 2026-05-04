@@ -24,7 +24,7 @@ import { replacedUserPanelComponent } from "@plugins/philsPluginLibrary/patches"
 export default definePlugin({
     name: "PhilsPluginLibrary",
     description: "A library for phil's plugins",
-    authors: [Devs.Vich],
+    authors: [Devs.phklie],
     patches: [
         {
             find: '"--custom-app-panels-height",',

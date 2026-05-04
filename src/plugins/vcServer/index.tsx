@@ -176,8 +176,8 @@ const settings = definePluginSettings({
 export default definePlugin({
     name: "ServerChatUtilities",
     description: "Perform voice actions on all users across the entire server at once (disconnect, mute, deafen, move all)",
-    authors: [Devs.Vich],
-    isVich: true,
+    authors: [Devs.phklie],
+    isphklie: true,
     settings,
 
     contextMenus: {

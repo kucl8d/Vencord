@@ -1358,7 +1358,7 @@ export default definePlugin({
     authors: [Devs.Etorix],
     dependencies: ["ServerListAPI"],
     startAt: StartAt.Init, // Needed in order to beat Read All Messages to inserting above the server list.
-    isVich: true,
+    isphklie: true,
     settings,
 
     sortQuests,

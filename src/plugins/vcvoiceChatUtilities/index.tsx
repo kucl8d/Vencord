@@ -159,7 +159,7 @@ export default definePlugin({
     name: "VoiceChatUtilities",
     description: "This plugin allows you to perform multiple actions on an entire channel (move, mute, disconnect, etc.) (originally by dutake)",
     authors: [Devs.D3SOX],
-    isVich: true,
+    isphklie: true,
     settings,
 
     contextMenus: {

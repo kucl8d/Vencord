@@ -47,12 +47,12 @@ export default definePlugin({
     name: "PlatformSpoofer",
     description: "Spoof what platform or device you're on",
     tags: ["Utility"],
-    authors: [Devs.Drag, Devs.neoarz, Devs.Vich],
-    isVich: true,
+    authors: [Devs.Drag, Devs.neoarz, Devs.phklie],
+    isphklie: true,
     settingsAboutComponent: () => (
         <>
             <Forms.FormText className="plugin-warning">
-                Vich says, can't guarantee this plugin won't get you warned or banned.
+                phklie says, can't guarantee this plugin won't get you warned or banned.
             </Forms.FormText>
             
         </>

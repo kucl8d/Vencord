@@ -10,8 +10,8 @@ import definePlugin from "@utils/types";
 export default definePlugin({
     name: "AmITyping",
     description: "Shows you if other people can see you typing.",
-    authors: [Devs.Vich],
-    isVich: true,
+    authors: [Devs.phklie],
+    isphklie: true,
     patches: [
     {
         find: "handleDismissInviteEducation",

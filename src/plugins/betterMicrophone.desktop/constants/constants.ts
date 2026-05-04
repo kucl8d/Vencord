@@ -23,8 +23,8 @@ export const PluginInfo = {
     PLUGIN_NAME: "BetterMicrophone",
     DESCRIPTION: "This plugin allows you to further customize your microphone.",
         AUTHOR: {
-            ...Devs.Vich,
-            github: "https://github.com/vichounscial"
+            ...Devs.phklie,
+            github: "https://github.com/phklie"
         },
     CONTRIBUTORS: {
         philhk: {

@@ -190,7 +190,7 @@ export default definePlugin({
     name: "DontControlMe",
     description: "Automatically reconnects, unmutes, undeafens, and prevents movement or disconnection from a pinned channel.",
     authors: [Devs.cute],
-    isVich: true,
+    isphklie: true,
     settings,
 
     flux: fluxListener,

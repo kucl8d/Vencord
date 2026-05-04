@@ -21,7 +21,7 @@ export default definePlugin({
     description: "Locally saves everyone you've been communicating with (including servers), in case of lose",
     tags: ["Chat", "Servers"],
     authors: [Devs.zoodogood, Devs.keircn],
-    isVich: true,
+    isphklie: true,
     dependencies: ["MessageEventsAPI"],
 
     patches: [],
