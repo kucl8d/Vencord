@@ -24,7 +24,7 @@ export const PluginInfo = {
     DESCRIPTION: "This plugin allows you to further customize your microphone.",
         AUTHOR: {
             ...Devs.Vich,
-            github: "https://github.com/vichlunsie"
+            github: "https://github.com/vichounscial"
         },
     CONTRIBUTORS: {
         philhk: {
