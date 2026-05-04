@@ -302,3 +302,4 @@ export default definePlugin({
         isOpen = false;
     }
 });
+
